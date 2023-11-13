@@ -1,7 +1,7 @@
 
 # My Game Collection
 
-Welcome to My Game Collection! This repository hosts a variety of interactive games for young children that I have developed. Typically they are designed to gameify learning core skills like reading. Feel free to explore and enjoy.
+Welcome to My Game Collection! This repository hosts a variety of simple games for young children that I have developed. Typically they are designed to gameify learning core skills like reading. Feel free to explore and enjoy.
 
 ## Games Included
 **Odd One Out**
