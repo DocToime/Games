@@ -1,0 +1,75 @@
+<!-- 
+    Copyright © 2023 Laurence Toime
+    All Rights Reserved.
+
+    This game and its source code are the exclusive property of Laurence Toime. 
+    Unauthorized copying, modification, distribution, or use of this game, 
+    either in part or in its entirety, without express written permission 
+    from Laurence Toime is strictly prohibited.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd One Out Game</title>
+    
+<link href="https://fonts.googleapis.com/css2?family=Andika&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Font Selection Dropdown -->
+<div style="position: absolute; top: 10px; left: 10px;">
+    <select id="font-selector">
+        <option value="Andika">Andika</option>
+        
+        <option value="Arial">Arial</option>
+        <option value="Cedarville Cursive">Cedarville Cursive</option>
+    </select>
+</div>
+
+    <div id="game-container">
+        <h1>Odd One Out Game</h1>
+        <div id="level-select-container">
+            <label for="level-select">Choose a level:</label>
+            <select id="level-select">
+                <!-- Options will be added dynamically -->
+            </select>
+        </div>
+        <div id="score-container">
+            <p id="score">Score: 0</p>
+            <p id="mistakes">Mistakes: 0</p>
+        </div>
+        <div id="message-container">
+            <p id="message"></p>
+        </div>
+        <div id="hint-container">
+            <p id="hint"></p>
+        </div>
+        <div id="word-options">
+            <!-- Word buttons will be dynamically created here -->
+        </div>
+        <button id="start-button">Start Game</button>
+        <button id="hint-button">Hint</button>
+    </div>
+    
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+    Copyright © 2023 Laurence Toime
+    All Rights Reserved.
+
+    This game and its source code are the exclusive property of Laurence Toime. 
+    Unauthorized copying, modification, distribution, or use of this game, 
+    either in part or in its entirety, without express written permission 
+    from Laurence Toime is strictly prohibited.
+-->
