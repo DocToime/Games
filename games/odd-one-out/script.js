@@ -846,13 +846,15 @@ function createWordButtons(words) {
         '#6f42c1', // Purple
         '#20c997', // Mint Green
         '#FF7F50', // Coral
-        '#ffc107', // Gold
         '#FF00FF'  // Pink
     ];
 
     // Select a random color for all buttons
     const randomColorIndex = Math.floor(Math.random() * colors.length);
     const buttonColor = colors[randomColorIndex];
+
+    const buttonFontSize = '30px'; // You can adjust the font size as needed
+
 
     words.forEach((word) => {
         const button = document.createElement('button');
@@ -862,6 +864,8 @@ function createWordButtons(words) {
         // Apply the same random color to each button
         button.style.backgroundColor = buttonColor;
         button.style.color = 'white'; // Ensure text color is white for visibility
+        button.style.fontSize = buttonFontSize; // Set the font size
+
 
         button.addEventListener('click', () => handleWordSelection(word));
         wordOptionsContainer.appendChild(button);
@@ -929,6 +933,12 @@ function startLevel(level) {
     document.getElementById('start-button').style.display = 'none';
 
     document.getElementById('hint-button').style.display = 'block';
+
+    // Set the selected option in the level-select drop-down
+    const levelSelect = document.getElementById('level-select');
+    levelSelect.value = currentLevel.toString(); // Convert currentLevel to a string for comparison
+
+    levelSelect.addEventListener('change', () => startLevel(levelSelect.value));
 }
 
 
@@ -990,6 +1000,11 @@ const completionImages = [
     
 ];
 
+// Shuffle the completionImages array once at the beginning
+shuffleArray(completionImages);
+// Variable to keep track of the current image index
+let currentImageIndex = 0;
+
 function flashImage() {
     const imageContainer = document.createElement('div');
     imageContainer.style.position = 'absolute';
@@ -1017,8 +1032,8 @@ function flashImage() {
     clickMessage.style.fontSize = '16px'; // Smaller font size
     imageContainer.appendChild(clickMessage);
 
-    const randomImageIndex = Math.floor(Math.random() * completionImages.length);
-    const imageSrc = completionImages[randomImageIndex];
+    // Use the currentImageIndex to select the image from the shuffled array
+    const imageSrc = completionImages[currentImageIndex];
 
     const image = document.createElement('img');
     image.src = imageSrc;
@@ -1026,6 +1041,9 @@ function flashImage() {
     image.style.width = '100%';
     image.style.borderRadius = '10px';
     imageContainer.appendChild(image);
+
+    // Increment the currentImageIndex for the next image
+    currentImageIndex = (currentImageIndex + 1) % completionImages.length;
 
     // Event Listener to remove the image container on click
     imageContainer.addEventListener('click', () => {
