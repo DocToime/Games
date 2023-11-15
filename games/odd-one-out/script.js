@@ -1009,14 +1009,14 @@ shuffleArray(completionImages);
 let currentImageIndex = 0;
 
 function flashImage() {
-    // Delay the execution of the flash image functionality
+    // Delay the execution for 1 second
     setTimeout(() => {
         const gameContainer = document.getElementById('game-container');
         const titleElement = document.querySelector('#game-container h1'); // Select the h1 element inside the game container
 
-        // Hide the game container and change the title color
-        gameContainer.classList.add('hidden-all');
-        titleElement.classList.add('hidden-title');
+        // Directly apply styles to hide the game container and change the title color
+        gameContainer.style.display = 'none';
+        titleElement.style.color = 'black';
 
         const imageContainer = document.createElement('div');
         imageContainer.style.position = 'absolute';
@@ -1055,14 +1055,16 @@ function flashImage() {
         // Increment the currentImageIndex
         currentImageIndex = (currentImageIndex + 1) % completionImages.length;
 
+        // Event Listener to remove the image container on click
         imageContainer.addEventListener('click', () => {
             document.body.removeChild(imageContainer);
 
-            // Show the game container and reset the title color
-            gameContainer.classList.remove('hidden-all');
-            titleElement.classList.remove('hidden-title');
+            // Reset styles to show the game container and title
+            gameContainer.style.display = '';
+            titleElement.style.color = '';
         });
-    }, 2000); // 2-second delay
+    }, 2000);
 }
+
 
 
