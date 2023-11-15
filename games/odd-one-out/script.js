@@ -997,6 +997,9 @@ const completionImages = [
     'images/image6.webp',
     'images/image7.webp',
     'images/image8.webp',
+    'images/image9.webp',
+    'images/image10.webp',
+    'images/image11.webp',
     
 ];
 
@@ -1006,56 +1009,60 @@ shuffleArray(completionImages);
 let currentImageIndex = 0;
 
 function flashImage() {
-    const imageContainer = document.createElement('div');
-    imageContainer.style.position = 'absolute';
-    imageContainer.style.zIndex = '1000';
-    imageContainer.style.width = '80%';
-    imageContainer.style.maxWidth = '600px';
-    imageContainer.style.margin = 'auto';
-    imageContainer.style.left = '0';
-    imageContainer.style.right = '0';
-    imageContainer.style.top = '50%';
-    imageContainer.style.transform = 'translateY(-50%)';
-    imageContainer.style.textAlign = 'center';
-    imageContainer.style.borderRadius = '10px';
-    document.body.appendChild(imageContainer);
+    // Delay the execution of the flash image functionality
+    setTimeout(() => {
+        const gameContainer = document.getElementById('game-container');
+        const titleElement = document.querySelector('#game-container h1'); // Select the h1 element inside the game container
 
-    const completionMessage = document.createElement('p');
-    completionMessage.innerText = `Well done! You passed Level ${currentLevel}.`;
-    completionMessage.style.fontSize = '24px'; // Exciting font size
-    completionMessage.style.fontWeight = 'bold'; // Bold text
-    completionMessage.style.marginBottom = '10px';
-    imageContainer.appendChild(completionMessage);
+        // Hide the game container and change the title color
+        gameContainer.classList.add('hidden-all');
+        titleElement.classList.add('hidden-title');
 
-    const clickMessage = document.createElement('p');
-    clickMessage.innerText = "Click anywhere to continue";
-    clickMessage.style.fontSize = '16px'; // Smaller font size
-    imageContainer.appendChild(clickMessage);
+        const imageContainer = document.createElement('div');
+        imageContainer.style.position = 'absolute';
+        imageContainer.style.zIndex = '1000';
+        imageContainer.style.width = '80%';
+        imageContainer.style.maxWidth = '600px';
+        imageContainer.style.margin = 'auto';
+        imageContainer.style.left = '0';
+        imageContainer.style.right = '0';
+        imageContainer.style.top = '50%';
+        imageContainer.style.transform = 'translateY(-50%)';
+        imageContainer.style.textAlign = 'center';
+        imageContainer.style.borderRadius = '10px';
+        document.body.appendChild(imageContainer);
 
-    // Use the currentImageIndex to select the image from the shuffled array
-    const imageSrc = completionImages[currentImageIndex];
+        const completionMessage = document.createElement('p');
+        completionMessage.innerText = `Well done! You passed Level ${currentLevel}.`;
+        completionMessage.style.fontSize = '24px';
+        completionMessage.style.fontWeight = 'bold';
+        completionMessage.style.marginBottom = '10px';
+        imageContainer.appendChild(completionMessage);
 
-    const image = document.createElement('img');
-    image.src = imageSrc;
-    image.alt = 'Flashing Image';
-    image.style.width = '100%';
-    image.style.borderRadius = '10px';
-    imageContainer.appendChild(image);
+        const clickMessage = document.createElement('p');
+        clickMessage.innerText = "Click anywhere to continue";
+        clickMessage.style.fontSize = '16px';
+        imageContainer.appendChild(clickMessage);
 
-    // Increment the currentImageIndex for the next image
-    currentImageIndex = (currentImageIndex + 1) % completionImages.length;
+        const imageSrc = completionImages[currentImageIndex];
+        const image = document.createElement('img');
+        image.src = imageSrc;
+        image.alt = 'Flashing Image';
+        image.style.width = '100%';
+        image.style.borderRadius = '10px';
+        imageContainer.appendChild(image);
 
-    // Event Listener to remove the image container on click
-    imageContainer.addEventListener('click', () => {
-        document.body.removeChild(imageContainer);
-    });
+        // Increment the currentImageIndex
+        currentImageIndex = (currentImageIndex + 1) % completionImages.length;
+
+        imageContainer.addEventListener('click', () => {
+            document.body.removeChild(imageContainer);
+
+            // Show the game container and reset the title color
+            gameContainer.classList.remove('hidden-all');
+            titleElement.classList.remove('hidden-title');
+        });
+    }, 2000); // 2-second delay
 }
 
 
-
-document.getElementById('test-ripple-button').addEventListener('click', finishLevel);
-
-
-
-// Debugging: Log a message to console to check if startLevel function is called
-console.log('JavaScript loaded. Waiting for Start Game button click.');
