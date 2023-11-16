@@ -38,8 +38,11 @@ function createWordButtons(words) {
 
     // Adjust font size based on the total number of letters
     let buttonFontSize = '30px'; // Default font size
-    if (totalLetters > 28) { // Threshold can be adjusted based on your layout
+    if (totalLetters > 24 < 34 ) { // Threshold can be adjusted based on your layout
         buttonFontSize = '24px'; // Smaller font size for more letters
+    }
+    if (totalLetters > 34 ) { // Threshold can be adjusted based on your layout
+        buttonFontSize = '20px'; // Smaller font size for more letters
     }
     // Further adjustments can be made based on different thresholds if needed
 
