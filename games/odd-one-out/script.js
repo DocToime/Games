@@ -33,24 +33,30 @@ function createWordButtons(words) {
     const randomColorIndex = Math.floor(Math.random() * colors.length);
     const buttonColor = colors[randomColorIndex];
 
-    const buttonFontSize = '30px'; // You can adjust the font size as needed
+    // Calculate the total number of letters in all words
+    const totalLetters = words.reduce((total, word) => total + word.length, 0);
 
+    // Adjust font size based on the total number of letters
+    let buttonFontSize = '30px'; // Default font size
+    if (totalLetters > 28) { // Threshold can be adjusted based on your layout
+        buttonFontSize = '24px'; // Smaller font size for more letters
+    }
+    // Further adjustments can be made based on different thresholds if needed
 
     words.forEach((word) => {
         const button = document.createElement('button');
         button.innerText = word;
         button.style.fontFamily = document.getElementById('font-selector').value;
-
-        // Apply the same random color to each button
         button.style.backgroundColor = buttonColor;
-        button.style.color = 'white'; // Ensure text color is white for visibility
-        button.style.fontSize = buttonFontSize; // Set the font size
-
+        button.style.color = 'white';
+        button.style.fontSize = buttonFontSize;
 
         button.addEventListener('click', () => handleWordSelection(word));
         wordOptionsContainer.appendChild(button);
     });
 }
+
+
 
 
 function updateDisplay(message) {
