@@ -257,7 +257,7 @@ function flashImage() {
 
             // Reset styles to show the game container and title
             gameContainer.style.display = '';
-            titleElement.style.color = '';
+            titleElement.style.icolor = '';
         });
     }, 2000);
 }
@@ -362,7 +362,7 @@ let gameData = {
                 "sound"
             ],
             "correct": "sound",
-            "hint": "Three of these are colors."
+            "hint": "Three of these are colours."
         }
     ],
     "2": [
@@ -374,7 +374,7 @@ let gameData = {
                 "colour"
             ],
             "correct": "colour",
-            "hint": "Three of these are specific colors."
+            "hint": "Three of these are specific colours."
         },
         {
             "words": [
@@ -812,7 +812,7 @@ let gameData = {
                 "pink"
             ],
             "correct": "pink",
-            "hint": "Three of these are primary colors."
+            "hint": "Three of these are primary colours."
         },
         {
             "words": [
@@ -1003,10 +1003,10 @@ let gameData = {
                 "red",
                 "green",
                 "blue",
-                "color"
+                "colour"
             ],
             "correct": "color",
-            "hint": "Three of these are colors."
+            "hint": "Three of these are colours."
         },
         {
             "words": [
@@ -1106,7 +1106,7 @@ let gameData = {
     "11": [
         {"words": ["Amusing", "Boring", "Funny", "Hilarious"], "correct": "Boring", "hint": "Three of these words mean making you laugh or smile."},
         {"words": ["Enormous", "Small", "Gigantic", "Vast"], "correct": "Small", "hint": "Three of these words mean very big."},
-        {"words": ["Delicious", "Yucky", "Tasty", "Flavorful"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
+        {"words": ["Delicious", "Yucky", "Tasty", "Flavourful"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
         {"words": ["Whisper", "Shout", "Yell", "Scream"], "correct": "Whisper", "hint": "Three of these words mean using a very loud voice."},
         {"words": ["Hard", "Easy", "Simple", "Effortless"], "correct": "Hard", "hint": "Three of these words mean not difficult."},
         {"words": ["Dull", "Exciting", "Thrilling", "Fascinating"], "correct": "Dull", "hint": "Three of these words mean very interesting and fun."},
