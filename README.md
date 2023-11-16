@@ -9,19 +9,14 @@ Welcome to my game collection. This repository hosts a few simple games for youn
 Purpose: A simple game for early readers designed to enhance reading comprehension.
 
 Gameplay: Players identify the item that differs from others, aiding in developing attention to detail and comprehension skills. Encourage the child to explain what it is that links 3 items, rather than just say which is the odd one out. Most should be quite straightforward, but for tricky or ambiguous questions, there is a 'Hints' button.
-Note that the questions are mostly AI-generated, and there may be multiple ways to answer. Let me know of any errors, but don't get too hung up on this!
-The default font is designed to be easy, and this can be changed to increase difficulty and familiarise with different writing styles.
-
-Audience: Ideal for children learning to read, it's a fun and educational tool for parents and educators.
-
-## How to Play
-Navigate to the `games` directory, and open the game you want to play. Each game is contained in its own folder.
+Note that the questions are mostly AI-generated, and there may be multiple ways to answer. Let me know of any errors, but don't get too hung up on this.
+The default font is designed to be easy for young readers, and this can be changed to increase difficulty and familiarise with different writing styles.
 
 ## Contributing
-Contributions, bug reports, and feature requests are welcome. Please feel free to fork the repository and submit pull requests.
+Contributions, bug reports, and feature requests are welcome. 
 
 ## License
-This project is licensed under the GNU General Public License v2.0 - see the [LICENSE](LICENSE) file for details.
+This project is freely licensed for non-commercial use. 
 
 ## Acknowledgments
 - Thanks to all who have played the games and provided feedback.
