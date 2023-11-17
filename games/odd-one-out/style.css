@@ -104,3 +104,7 @@
         font-style: normal;
     }
     
+.easy { background-color: rgb(144, 238, 144); }
+.medium { background-color: rgb(255, 223, 128) }
+.mediumhard { background-color: rgb(255, 165, 0); }
+.hard { background-color: rgb(255, 99, 71); }

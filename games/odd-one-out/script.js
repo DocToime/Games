@@ -150,14 +150,21 @@ function finishLevel() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const levelSelect = document.getElementById('level-select');
-    Object.keys(gameData).forEach(level => {
+
+    for (let i = 1; i <= 18; i++) {
         const option = document.createElement('option');
-        option.value = level;
-        option.text = 'Level ' + level;
+        option.value = i;
+        option.textContent = 'Level ' + i;
+        option.className = getDifficulty(i); // Add the difficulty as a class
         levelSelect.appendChild(option);
+    }
+    updateLevelSelectBackground(levelSelect); // Initial update of background color
+
+    levelSelect.addEventListener('change', () => {
+        startLevel(levelSelect.value);
+        updateLevelSelectBackground(levelSelect); // Update background on change
     });
 
-    levelSelect.addEventListener('change', () => startLevel(levelSelect.value));
     document.getElementById('start-button').addEventListener('click', () => startLevel(currentLevel));
     document.getElementById('hint-button').addEventListener('click', displayHint);
     setupModalEventListeners();
@@ -271,8 +278,71 @@ function flashImage() {
     }, 2000);
 }
 
+function getDifficulty(level) {
+    if (level >= 1 && level <= 3) {
+        return 'easy';
+    } else if (level >= 4 && level <= 11) {
+        return 'medium';
+    } else if (level >= 2 && level <= 18) {
+        return 'mediumhard';
+    } else {
+        return 'hard'
+    }
+}
+
+function updateLevelSelectBackground(levelSelect) {
+    const selectedOption = levelSelect.options[levelSelect.selectedIndex];
+    const difficultyClass = selectedOption.className;
+
+    // Remove all possible difficulty classes
+    levelSelect.classList.remove('easy', 'medium', 'mediumhard', 'hard');
+
+    // Add the new difficulty class
+    if (difficultyClass) {
+        levelSelect.classList.add(difficultyClass);
+    }
+}
+
 let gameData = {
     "1": [
+        {"words": ["cat", "hat", "bat", "dog"], "correct": "dog", "hint": "Three of these words rhyme."},
+        {"words": ["pen", "hen", "ten", "pig"], "correct": "pig", "hint": "Three of these words rhyme."},
+        {"words": ["man", "can", "pan", "dog"], "correct": "dog", "hint": "Three of these words rhyme."},
+        {"words": ["big", "pig", "wig", "bat"], "correct": "bat", "hint": "Three of these words rhyme."},
+        {"words": ["net", "pet", "jet", "sun"], "correct": "sun", "hint": "Three of these words rhyme."},
+        {"words": ["bus", "fuss", "plus", "cat"], "correct": "cat", "hint": "Three of these words rhyme."},
+        {"words": ["hop", "mop", "top", "man"], "correct": "man", "hint": "Three of these words rhyme."},
+        {"words": ["bag", "tag", "rag", "sun"], "correct": "sun", "hint": "Three of these words rhyme."},
+        {"words": ["bug", "rug", "hug", "hat"], "correct": "hat", "hint": "Three of these words rhyme."},
+        {"words": ["sit", "hit", "kit", "dog"], "correct": "dog", "hint": "Three of these words rhyme."}
+    ],
+    "2": [
+        {"words": ["fat", "cat", "rat", "bug"], "correct": "bug", "hint": "Three of these words sound rhyme."},
+        {"words": ["bit", "lit", "pit", "man"], "correct": "man", "hint": "Three of these words rhyme."},
+        {"words": ["log", "dog", "fog", "cat"], "correct": "cat", "hint": "Three of these words rhyme."},
+        {"words": ["hat", "bat", "rat", "pig"], "correct": "pig", "hint": "Three of these words rhyme."},
+        {"words": ["jet", "net", "pet", "bus"], "correct": "bus", "hint": "Three of these words rhyme."},
+        {"words": ["mop", "top", "hop", "bug"], "correct": "bug", "hint": "Three of these words rhyme."},
+        {"words": ["cap", "tap", "map", "dog"], "correct": "dog", "hint": "Three of these words rhyme."},
+        {"words": ["sun", "bun", "fun", "rat"], "correct": "rat", "hint": "Three of these words rhyme."},
+        {"words": ["rug", "bug", "hug", "net"], "correct": "net", "hint": "Three of these words rhyme."},
+        {"words": ["kit", "sit", "bit", "bus"], "correct": "bus", "hint": "Three of these words rhyme."}
+    ],
+    "3": [
+        {"words": ["cat", "dog", "pig", "box"], "correct": "box", "hint": "Three of these are animals."},
+        {"words": ["bed", "rug", "lamp", "ball"], "correct": "ball", "hint": "Three of these are found in a house."},
+        {"words": ["cup", "mug", "pan", "pen"], "correct": "pen", "hint": "Three of these are used in the kitchen."},
+        {"words": ["bus", "car", "van", "fish"], "correct": "fish", "hint": "Three of these are types of vehicles."},
+        {"words": ["hat", "cap", "coat", "moon"], "correct": "moon", "hint": "Three of these are items of clothing."},
+        {"words": ["bat", "ball", "net", "sock"], "correct": "sock", "hint": "Three of these are used in sports."},
+        {"words": ["rat", "cat", "bug", "map"], "correct": "map", "hint": "Three of these are animals."},
+        {"words": ["sun", "star", "moon", "dish"], "correct": "dish", "hint": "Three of these are found in the sky."},
+        {"words":["ship", "boat", "raft", "tree"], "correct": "tree", "hint": "Three of these can be found on water."},
+        {"words": ["tree", "bush", "flower", "lock"], "correct": "lock", "hint": "Three of these are parts of nature."}
+    ],
+    
+    
+    "4": [
         {
             "words": [
                 "February",
@@ -374,7 +444,7 @@ let gameData = {
             "hint": "Three of these are colours."
         }
     ],
-    "2": [
+    "5": [
         {
             "words": [
                 "purple",
@@ -476,7 +546,7 @@ let gameData = {
             "hint": "Three of these are royal titles."
         }
     ],
-    "3": [
+    "6": [
         {
             "words": [
                 "read",
@@ -578,7 +648,7 @@ let gameData = {
             "hint": "Three of these are farm animals"
         }
     ],
-    "4": [
+    "7": [
         {
             "words": [
                 "phone",
@@ -680,7 +750,7 @@ let gameData = {
             "hint": "Three of these are types of domestic animals."
         }
     ],
-    "5": [
+    "8": [
         {
             "words": [
                 "potato",
@@ -782,7 +852,7 @@ let gameData = {
             "hint": "Three of these are types of flavour."
         }
     ],
-    "6": [
+    "9": [
         {
             "words": [
                 "5",
@@ -884,7 +954,7 @@ let gameData = {
             "hint": "Three of these are multiples of 10."
         }
     ],
-    "7": [
+    "10": [
         {
             "words": [
                 "scarf",
@@ -986,7 +1056,7 @@ let gameData = {
             "hint": "Three of these are common writing instruments."
         }
     ],
-    "8": [
+    "11": [
         {
             "words": [
                 "walk",
@@ -1014,7 +1084,7 @@ let gameData = {
                 "blue",
                 "colour"
             ],
-            "correct": "color",
+            "correct": "colour",
             "hint": "Three of these are colours."
         },
         {
@@ -1088,7 +1158,7 @@ let gameData = {
             "hint": "Three of these are divisible by 4."
         }
     ],
-    "9": [
+    "12": [
         {"words": ["Joyful", "Cheerful", "Sad", "Happy"], "correct": "Sad", "hint": "Three of these words mean feeling very good and smiling."},
         {"words": ["Tiny", "Little", "Big", "Small"], "correct": "Big", "hint": "Three of these words mean not large or not much."},
         {"words": ["Yummy", "Tasty", "Yucky", "Delicious"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
@@ -1100,7 +1170,7 @@ let gameData = {
         {"words": ["Hot", "Warm", "Cold", "Heated"], "correct": "Cold", "hint": "Three of these words mean having a high temperature."},
         {"words": ["Wet", "Damp", "Dry", "Moist"], "correct": "Dry", "hint": "Three of these words mean having water or liquid on them."}
     ],
-    "10": [
+    "13": [
         {"words": ["Happy", "Glad", "Upset", "Cheerful"], "correct": "Upset", "hint": "Three of these words mean feeling good and smiling."},
         {"words": ["Huge", "Big", "Tiny", "Large"], "correct": "Tiny", "hint": "Three of these words mean very large."},
         {"words": ["Sour", "Sweet", "Bitter", "Tasty"], "correct": "Sour", "hint": "Three of these words mean good to eat and not bitter or sour."},
@@ -1112,7 +1182,7 @@ let gameData = {
         {"words": ["Cold", "Hot", "Warm", "Boiling"], "correct": "Cold", "hint": "Three of these words mean having a high temperature."},
         {"words": ["Dry", "Wet", "Damp", "Moist"], "correct": "Dry", "hint": "Three of these words mean having water or liquid on them."}
     ],
-    "11": [
+    "14": [
         {"words": ["Amusing", "Boring", "Funny", "Hilarious"], "correct": "Boring", "hint": "Three of these words mean making you laugh or smile."},
         {"words": ["Enormous", "Small", "Gigantic", "Vast"], "correct": "Small", "hint": "Three of these words mean very big."},
         {"words": ["Delicious", "Yucky", "Tasty", "Flavourful"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
@@ -1125,7 +1195,7 @@ let gameData = {
         {"words": ["Soggy", "Dry", "Damp", "Moist"], "correct": "Dry", "hint": "Three of these words mean a little bit wet."}
     ],
 
-    "12": [
+    "15": [
         {"words": ["Tall", "Gargantuan", "Huge", "Petite"], "correct": "Petite", "hint": "Three of these words mean very large."},
         {"words": ["Happy", "Joyful", "Elated", "Morose"], "correct": "Morose", "hint": "Three of these words mean very happy."},
         {"words": ["Fast", "Swift", "Rapid", "Slow"], "correct": "Slow", "hint": "Three of these words mean very quick."},
@@ -1137,7 +1207,7 @@ let gameData = {
         {"words": ["Hard", "Difficult", "Easy", "Challenging"], "correct": "Easy", "hint": "Three of these words mean not easy."},
         {"words": ["Silent", "Quiet", "Noisy", "Hushed"], "correct": "Noisy", "hint": "Three of these words mean making little or no noise."}
     ],
-    "13": [
+    "16": [
         {"words": ["Excited", "Thrilled", "Apathetic", "Stoked"], "correct": "Apathetic", "hint": "Three of these words mean very excited."},
         {"words": ["Intelligent", "Smart", "Dull", "Clever"], "correct": "Dull", "hint": "Three of these words mean having good understanding or a high mental capacity."},
         {"words": ["Beautiful", "Gorgeous", "Plain", "Lovely"], "correct": "Plain", "hint": "Three of these words mean aesthetically pleasing."},
@@ -1149,7 +1219,7 @@ let gameData = {
         {"words": ["Optimistic", "Hopeful", "Pessimistic", "Confident"], "correct": "Pessimistic", "hint": "Three of these words mean expecting good outcomes."},
         {"words": ["Neat", "Orderly", "Messy", "Tidy"], "correct": "Messy", "hint": "Three of these words mean arranged in a tidy way."}
     ],
-    "14": [
+    "17": [
         {"words": ["Euphoric", "Miserable", "Ecstatic", "Elated"], "correct": "Miserable", "hint": "Three of these words mean feeling extremely happy."},
         {"words": ["Minuscule", "Enormous", "Petite", "Tiny"], "correct": "Enormous", "hint": "Three of these words mean very small."},
         {"words": ["Abhorrent", "Appealing", "Repulsive", "Disgusting"], "correct": "Appealing", "hint": "Three of these words mean causing a strong feeling of dislike."},
@@ -1161,7 +1231,7 @@ let gameData = {
         {"words": ["Blistering", "Frigid", "Sweltering", "Torrid"], "correct": "Frigid", "hint": "Three of these words mean extremely hot."},
         {"words": ["Saturated", "Parched", "Soaked", "Drenched"], "correct": "Parched", "hint": "Three of these words mean very wet."}
     ],
-    "15": [
+    "18": [
         {"words": ["Cacophonous", "Harmonious", "Discordant", "Clamorous"], "correct": "Harmonious", "hint": "Three of these words mean having a harsh, often unpleasantly loud sound."},
         {"words": ["Invisible", "Overt", "Conspicuous", "Prominent"], "correct": "Invisible", "hint": "Three of these words mean very easy to see or notice."},
         {"words": ["Nefarious", "Virtuous", "Heinous", "Villainous"], "correct": "Virtuous", "hint": "Three of these words mean extremely wicked or villainous."},
@@ -1173,7 +1243,7 @@ let gameData = {
         {"words": ["Arctic", "Tropical", "Torrid", "Sweltering"], "correct": "Arctic", "hint": "Three of these words mean very hot, especially to the point of causing discomfort."},
         {"words": ["Parched", "Sodden", "Saturated", "Soaked"], "correct": "Parched", "hint": "Three of these words mean thoroughly wet."}
     ],
-    "16": [
+    "19": [
         {"words": ["Gregarious", "Introverted", "Sociable", "Convivial"], "correct": "Introverted", "hint": "Three of these words mean enjoying the company of others."},
         {"words": ["Luminous", "Dim", "Radiant", "Glowing"], "correct": "Dim", "hint": "Three of these words mean bright or giving off light."},
         {"words": ["Deleterious", "Beneficial", "Harmful", "Detrimental"], "correct": "Beneficial", "hint": "Three of these words mean causing harm or damage."},
@@ -1185,7 +1255,7 @@ let gameData = {
         {"words": ["Inferno", "Blizzard", "Conflagration", "Wildfire"], "correct": "Blizzard", "hint": "Three of these words mean a very large and destructive fire."},
         {"words": ["Arduous", "Easy", "Demanding", "Laborious"], "correct": "Easy", "hint": "Three of these words mean requiring a lot of hard work."}
     ]  ,
-    "17": [
+    "20": [
         {"words": ["Melancholy", "Joyful", "Sorrowful", "Gloomy"], "correct": "Joyful", "hint": "Three of these words mean feeling sad."},
         {"words": ["Transparent", "Opaque", "Clear", "Lucid"], "correct": "Opaque", "hint": "Three of these words mean you can see through them."},
         {"words": ["Malevolent", "Kind", "Nasty", "Wicked"], "correct": "Kind", "hint": "Three of these words mean not nice."},
@@ -1196,6 +1266,18 @@ let gameData = {
         {"words": ["Placid", "Turbulent", "Calm", "Serene"], "correct": "Turbulent", "hint": "Three of these words mean very quiet and peaceful."},
         {"words": ["Drought", "Deluge", "Downpour", "Flood"], "correct": "Drought", "hint": "Three of these words mean a lot of rain."},
         {"words": ["Simple", "Complex", "Complicated", "Intricate"], "correct": "Simple", "hint": "Three of these words mean not easy to understand."}
+    ],
+    "21": [
+        {"words": ["Magnanimous", "Selfish", "Generous", "Altruistic"], "correct": "Selfish", "hint": "Three of these words mean very giving and kind."},
+        {"words": ["Invisible", "Visible", "Transparent", "See-through"], "correct": "Invisible", "hint": "Three of these words mean you can see it."},
+        {"words": ["Humid", "Dry", "Muggy", "Moist"], "correct": "Dry", "hint": "Three of these words mean having a lot of moisture in the air."},
+        {"words": ["Ancient", "New", "Old", "Antique"], "correct": "New", "hint": "Three of these words mean very old."},
+        {"words": ["Scarce", "Abundant", "Rare", "Limited"], "correct": "Abundant", "hint": "Three of these words mean there isn’t much of it."},
+        {"words": ["Boisterous", "Quiet", "Loud", "Rambunctious"], "correct": "Quiet", "hint": "Three of these words mean making a lot of noise."},
+        {"words": ["Vivid", "Dull", "Bright", "Colorful"], "correct": "Dull", "hint": "Three of these words mean having strong or bright colors."},
+        {"words": ["Barren", "Fertile", "Unproductive", "Sterile"], "correct": "Fertile", "hint": "Three of these words mean not good for growing plants."},
+        {"words": ["Arid", "Wet", "Dry", "Parched"], "correct": "Wet", "hint": "Three of these words mean very dry."},
+        {"words": ["Rapid", "Slow", "Swift", "Fast"], "correct": "Slow", "hint": "Three of these words mean moving or happening quickly."}
     ]  
 }
 
