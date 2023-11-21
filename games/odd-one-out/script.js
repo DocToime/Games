@@ -875,13 +875,13 @@ let gameData = {
         },
         {
             "words": [
-                "14",
-                "21",
-                "7",
-                "25"
+                "15",
+                "5",
+                "10",
+                "18"
             ],
-            "correct": "25",
-            "hint": "Three of these are divisible by 7."
+            "correct": "18",
+            "hint": "Three of these are multiples of 5."
         },
         {
             "words": [
@@ -898,9 +898,9 @@ let gameData = {
                 "ball",
                 "wicket",
                 "bat",
-                "team"
+                "racquet"
             ],
-            "correct": "team",
+            "correct": "racquet",
             "hint": "Three of these are related to cricket."
         },
         {
@@ -931,17 +931,17 @@ let gameData = {
                 "car"
             ],
             "correct": "train",
-            "hint": "Three of these are modes of transportation."
+            "hint": "Three of these have tyres."
         },
         {
             "words": [
                 "grape",
-                "banana",
+                "pear",
                 "cherry",
                 "apple"
             ],
-            "correct": "banana",
-            "hint": "Three of these are fruits."
+            "correct": "cherry",
+            "hint": "Three of these have seeds rather than stones."
         },
         {
             "words": [
