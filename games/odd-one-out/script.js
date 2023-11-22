@@ -856,7 +856,9 @@ let gameData = {
             "hint": "Three of these are multiples of four."
         }
     ],
-    "9": [
+    },
+    "Advanced": {
+    "1": [
         {"words": ["Flour", "Flower", "Petal", "Stem"], "correct": "Flour", "hint": "You make cakes with flour, and a flower grows in the garden."},
         {"words": ["Knight", "Night", "Evening", "Twilight"], "correct": "Knight", "hint": "A knight rides horses, while night comes after sunset."},
         {"words": ["Mail", "Male", "Female", "Woman"], "correct": "Mail", "hint": "We receive mail in the mailbox, unlike a male, which means a boy or man."},
@@ -865,10 +867,10 @@ let gameData = {
         {"words": ["Sale", "Sail", "Boat", "Ship"], "correct": "Sale", "hint": "A sale means lower prices, while to sail means to travel on a boat."},
         {"words": ["Right", "Write", "Read", "Speak"], "correct": "Right", "hint": "You write a story with a pen, being right means being correct."},
         {"words": ["Blue", "Blew", "Green", "Yellow"], "correct": "Blew", "hint": "The wind blew the leaves, under a blue sky."},
-        {"words": ["Meet", "Meat", "Vegetable", "Fruit"], "correct": "Meat", "hint": "Let's meet at the playground and have some meat for lunch."},
+        {"words": ["Meet", "Meat", "Vegetable", "Fruit"], "correct": "Meet", "hint": "Let's meet at the playground and have some meat for lunch."},
         {"words": ["No", "Know", "Understand", "Realize"], "correct": "No", "hint": "I know the answer is correct, so no need to worry."}
     ],
-    "10": [
+    "2": [
         {"words": ["Peace", "Piece", "Part", "Segment"], "correct": "Peace", "hint": "Peace is quiet and calm, unlike a puzzle piece that you find."},
         {"words": ["Sea", "See", "View", "Look"], "correct": "Sea", "hint": "You can see fish in the sea, and I see you smiling."},
         {"words": ["Tail", "Tale", "Story", "Narrative"], "correct": "Tail", "hint": "A cat's tail is furry, while a tale is a story you read."},
@@ -879,11 +881,20 @@ let gameData = {
         {"words": ["Hole", "Whole", "Entire", "Complete"], "correct": "Hole", "hint": "We found a hole in the ground during our whole adventure."},
         {"words": ["Break", "Brake", "Stop", "Halt"], "correct": "Brake", "hint": "Press the brake to slow down, don't break your toy."},
         {"words": ["Flower", "Flour", "Bread", "Cake"], "correct": "Flower", "hint": "This flower is pretty in the vase, unlike flour used for baking."}
-    ]
-
-    },
-    "Advanced": {
-    "1": [
+    ],
+    "3": [
+        {"words": ["Wait", "Weight", "Heavy", "Light"], "correct": "Weight", "hint": "You might wait for your turn, but weight is how heavy something is."},
+        {"words": ["Stationary", "Stationery", "Pen", "Pencil"], "correct": "Stationary", "hint": "You write with stationery like pens, but stationary means not moving."},
+        {"words": ["Rose", "Rows", "Lines", "Stripes"], "correct": "Rose", "hint": "A rose is a beautiful flower, while rows are lines of things in order."},
+        {"words": ["Throne", "Thrown", "Cast", "Toss"], "correct": "Thrown", "hint": "A king sits on a throne, while thrown means something was tossed."},
+        {"words": ["Paws", "Pause", "Stop", "Go"], "correct": "Paws", "hint": "Cats have paws to walk with, but we pause a movie to stop it for a while."},
+        {"words": ["Hear", "Here", "There", "Where"], "correct": "Hear", "hint": "You can hear with your ears, but here is the place where we are."},
+        {"words": ["One", "Won", "Lost", "Found"], "correct": "Won", "hint": "You have one apple, but won means you came first in a game."},
+        {"words": ["Maze", "Maize", "Corn", "Wheat"], "correct": "Maize", "hint": "A maze is a puzzle to walk through, while maize is another word for corn."},
+        {"words": ["Principal", "Principle", "Rule", "Guideline"], "correct": "Principal", "hint": "The principal runs our school, but a principle is an important rule."},
+        {"words": ["Hole", "Whole", "Entire", "Part"], "correct": "Hole", "hint": "You might dig a hole in the ground, but whole means all of something."}
+    ],
+    "4": [
         {"words": ["Joyful", "Cheerful", "Sad", "Happy"], "correct": "Sad", "hint": "Three of these words mean feeling very good and smiling."},
         {"words": ["Tiny", "Little", "Big", "Small"], "correct": "Big", "hint": "Three of these words mean not large or not much."},
         {"words": ["Yummy", "Tasty", "Yucky", "Delicious"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
@@ -895,7 +906,8 @@ let gameData = {
         {"words": ["Hot", "Warm", "Cold", "Heated"], "correct": "Cold", "hint": "Three of these words mean having a high temperature."},
         {"words": ["Wet", "Damp", "Dry", "Moist"], "correct": "Dry", "hint": "Three of these words mean having water or liquid on them."}
     ],
-    "2": [
+
+    "5": [
         {"words": ["Happy", "Glad", "Upset", "Cheerful"], "correct": "Upset", "hint": "Three of these words mean feeling good and smiling."},
         {"words": ["Huge", "Big", "Tiny", "Large"], "correct": "Tiny", "hint": "Three of these words mean very large."},
         {"words": ["Sour", "Sweet", "Bitter", "Tasty"], "correct": "Sour", "hint": "Three of these words mean good to eat and not bitter or sour."},
@@ -907,7 +919,7 @@ let gameData = {
         {"words": ["Cold", "Hot", "Warm", "Boiling"], "correct": "Cold", "hint": "Three of these words mean having a high temperature."},
         {"words": ["Dry", "Wet", "Damp", "Moist"], "correct": "Dry", "hint": "Three of these words mean having water or liquid on them."}
     ],
-    "3": [
+    "6": [
         {"words": ["Amusing", "Boring", "Funny", "Hilarious"], "correct": "Boring", "hint": "Three of these words mean making you laugh or smile."},
         {"words": ["Enormous", "Small", "Gigantic", "Vast"], "correct": "Small", "hint": "Three of these words mean very big."},
         {"words": ["Delicious", "Yucky", "Tasty", "Flavourful"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
@@ -920,7 +932,7 @@ let gameData = {
         {"words": ["Soggy", "Dry", "Damp", "Moist"], "correct": "Dry", "hint": "Three of these words mean a little bit wet."}
     ],
 
-    "4": [
+    "7": [
         {"words": ["Tall", "Gargantuan", "Huge", "Petite"], "correct": "Petite", "hint": "Three of these words mean very large."},
         {"words": ["Happy", "Joyful", "Elated", "Morose"], "correct": "Morose", "hint": "Three of these words mean very happy."},
         {"words": ["Fast", "Swift", "Rapid", "Slow"], "correct": "Slow", "hint": "Three of these words mean very quick."},
@@ -932,7 +944,7 @@ let gameData = {
         {"words": ["Hard", "Difficult", "Easy", "Challenging"], "correct": "Easy", "hint": "Three of these words mean not easy."},
         {"words": ["Silent", "Quiet", "Noisy", "Hushed"], "correct": "Noisy", "hint": "Three of these words mean making little or no noise."}
     ],
-    "5": [
+    "8": [
         {"words": ["Excited", "Thrilled", "Apathetic", "Stoked"], "correct": "Apathetic", "hint": "Three of these words mean very excited."},
         {"words": ["Intelligent", "Smart", "Dull", "Clever"], "correct": "Dull", "hint": "Three of these words mean having good understanding or a high mental capacity."},
         {"words": ["Beautiful", "Gorgeous", "Plain", "Lovely"], "correct": "Plain", "hint": "Three of these words mean aesthetically pleasing."},
@@ -1141,6 +1153,8 @@ function startLevel(difficulty, level) {
     document.getElementById('start-button').style.display = 'none';
     document.getElementById('instructions-button').style.display = 'none';
     document.getElementById('hint-button').style.display = 'block';
+        // Show the hint button when the game starts
+    document.getElementById('hint-button').style.display = 'block';
 }
 
 
@@ -1163,7 +1177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     levelSelect.addEventListener('change', () => {
         const selectedDifficulty = difficultySelect.value;
         const selectedLevel = levelSelect.value;
-        currentLevel = selectedLevel; // Update the current level without starting the game
+        startLevel(selectedDifficulty, selectedLevel); // Update the current level without starting the game
     });
 
     document.getElementById('start-button').addEventListener('click', () => {
