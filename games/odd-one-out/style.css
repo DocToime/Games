@@ -1,110 +1,219 @@
+body {
+    font-family: "Andika", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black; /* Updated to black for a sleek look */
+    color: #ddd; /* Softer shade for text to reduce eye strain */
+}
 
-        
-        body {
-        font-family: "Andika", sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: black; /* Updated to black for a sleek look */
-        color: #ddd; /* Softer shade for text to reduce eye strain */
-    }
+#game-container {
+    position: relative;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Subtle white shadow for depth */
+    background-color: #333; /* Darker background for the container */
+    border-radius: 10px;
+    color: white; /* Ensuring text inside the container is also light */
+}
 
-    #game-container {
-        text-align: center;
-        width: 80%;
-        max-width: 600px;
-        margin: auto;
-        padding: 20px;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Subtle white shadow for depth */
-        background-color: #333; /* Darker background for the container */
-        border-radius: 10px;
-        color: white; /* Ensuring text inside the container is also light */
-    }
+#score-container, #hint-container {
+    margin: 10px 0;
+}
 
-    #score-container, #hint-container {
-        margin: 10px 0;
-    }
+#word-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
 
-    #word-options {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-top: 20px;
-    }
+button {
+    padding: 10px 20px;
+    border: 1px solid grey; /* Added border for definition */
+    border-radius: 5px;
+    background-color: #555; /* Darker button background */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
 
-    button {
-        padding: 10px 20px;
-        border: 1px solid grey; /* Added border for definition */
-        border-radius: 5px;
-        background-color: #555; /* Darker button background */
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s, border-color 0.3s;
-    }
+button:hover {
+    background-color: #777; /* Lighter on hover for interactivity */
+    border-color: #999; /* Change border color on hover */
+}
 
-    button:hover {
-        background-color: #777; /* Lighter on hover for interactivity */
-        border-color: #999; /* Change border color on hover */
-    }
+/* Left-hand Side Controls (Level and Round) */
+#left-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    #start-button {
-        margin-top: 30px;
-    }
+/* Right-hand Side Controls (Font Selector) */
+#right-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: flex-start; /* Align items to the start for a clean look */
+    gap: 5px; /* Space between label and dropdown */
+}
 
-    #hint-button {
-        padding: 5px 10px;
-        background-color: #444; /* Updated background color */
-        color: white; /* Updated text color */
-        font-size: 12px;
-        border: 1px solid grey; /* Consistent border style */
-        border-radius: 5px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
+/* Style for individual dropdown containers */
+#font-selector, #difficulty-select-container, #level-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between label and dropdown */
+}
 
-    /* Button flash animations */
-    .flash-green {
-        animation: flashGreen 0.5s;
-    }
+/* Style for dropdowns */
+select {
+    padding: 5px;
+    background-color: lightgray; /* Light grey background */
+    border: 1px solid grey;
+    border-radius: 5px;
+    color: black; /* Ensuring dropdown text is visible */
+    font-size: 14px;
+}
 
-    .flash-red {
-        animation: flashRed 0.5s;
-    }
+/* Style for labels */
+label {
+    font-size: 14px;
+    color: white;
+}
 
-    @keyframes flashGreen {
-        50% { background-color: rgba(0, 255, 0, 0.5); }
-    }
+/* Style for Instructions Button and Start Button */
+#instructions-button, #start-button {
+    padding: 10px 20px;
+    background-color: #555; /* Consistent with other buttons */
+    color: white;
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
 
-    @keyframes flashRed {
-        50% { background-color: rgba(255, 0, 0, 0.5); }
-    }
+#instructions-button:hover, #start-button:hover {
+    background-color: #777;
+    border-color: #999;
+}
 
-    @font-face {
-        font-family: 'VictoriaCursive';
-        src: url('fonts/VICCURSI.TTF') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-    
-    @font-face {
-        font-family: 'OpenDyslexic3-Regular';
-        src: url('fonts/OpenDyslexic3-Regular.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-    
-    @font-face {
-        font-family: 'OpenDyslexic3-Bold';
-        src: url('fonts/OpenDyslexic3-Bold.ttf') format('truetype');
-        font-weight: bold;
-        font-style: normal;
-    }
-    
-.easy { background-color: rgb(144, 238, 144); }
-.medium { background-color: rgb(255, 223, 128) }
-.mediumhard { background-color: rgb(255, 165, 0); }
-.hard { background-color: rgb(255, 99, 71); }
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#hint-button {
+    padding: 5px 10px;
+    background-color: #444; /* Updated background color */
+    color: white; /* Updated text color */
+    font-size: 12px;
+    border: 1px solid grey; /* Consistent border style */
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Button flash animations */
+.flash-green {
+    animation: flashGreen 0.5s;
+}
+
+.flash-red {
+    animation: flashRed 0.5s;
+}
+
+@keyframes flashGreen {
+    50% { background-color: rgba(0, 255, 0, 0.5); }
+}
+
+@keyframes flashRed {
+    50% { background-color: rgba(255, 0, 0, 0.5); }
+}
+
+@font-face {
+    font-family: 'VictoriaCursive';
+    src: url('fonts/VICCURSI.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic3-Regular';
+    src: url('fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic3-Bold';
+    src: url('fonts/OpenDyslexic3-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+#instructions-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001; /* Ensure it's above other content */
+}
+
+.instructions-content {
+    background-color: #333; /* Same as game container */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Same as game container */
+    text-align: left; /* Align text to the left */
+    margin: auto; /* Center the box */
+}
+
+.instructions-content h2 {
+    margin-top: 0;
+    text-align: center; /* Center-align the title */
+}
+
+#close-instructions {
+    background-color: #555; /* Same as other buttons */
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Make the button a block element */
+    margin-left: auto; /* Align button to the right */
+    margin-right: auto; /* Align button to the right */
+}
+
+#close-instructions:hover {
+    background-color: #777;
+    border-color: #999;
+}

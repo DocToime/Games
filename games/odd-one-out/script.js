@@ -1,337 +1,34 @@
 
-let currentLevel = 1;
-let currentQuestionIndex = 0;
-let score = 0;
-let mistakes = 0;
-let hintUsed = false;
-
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-function createWordButtons(words) {
-    const wordOptionsContainer = document.getElementById('word-options');
-    wordOptionsContainer.innerHTML = '';
-    hintUsed = false;
-    shuffleArray(words);
-
-    // Define a set of vibrant colors
-    const colors = [
-        '#007bff', // Bright Blue
-        '#17a2b8', // Teal
-        '#fd7e14', // Orange
-        '#6f42c1', // Purple
-        '#20c997', // Mint Green
-        '#FF7F50', // Coral
-        '#FF00FF'  // Pink
-    ];
-
-    // Select a random color for all buttons
-    const randomColorIndex = Math.floor(Math.random() * colors.length);
-    const buttonColor = colors[randomColorIndex];
-
-    // Calculate the total number of letters in all words
-    const totalLetters = words.reduce((total, word) => total + word.length, 0);
-
-    // Adjust font size based on the total number of letters
-    let buttonFontSize = '30px'; // Default font size
-    if (totalLetters > 24 < 34 ) { // Threshold can be adjusted based on your layout
-        buttonFontSize = '24px'; // Smaller font size for more letters
-    }
-    if (totalLetters > 34 ) { // Threshold can be adjusted based on your layout
-        buttonFontSize = '20px'; // Smaller font size for more letters
-    }
-    // Further adjustments can be made based on different thresholds if needed
-
-    words.forEach((word) => {
-        const button = document.createElement('button');
-        button.innerText = word;
-        button.style.fontFamily = document.getElementById('font-selector').value;
-        button.style.backgroundColor = buttonColor;
-        button.style.color = 'white';
-        button.style.fontSize = buttonFontSize;
-
-        button.addEventListener('click', () => handleWordSelection(word));
-        wordOptionsContainer.appendChild(button);
-    });
-}
-
-
-
-
-function updateDisplay(message) {
-    const messageElement = document.getElementById('message');
-    messageElement.innerHTML = message || '&nbsp;'; // Replace an empty message with a non-breaking space
-    document.getElementById('score').innerText = 'Score: ' + score;
-    document.getElementById('mistakes').innerText = 'Mistakes: ' + mistakes;
-    document.getElementById('hint').innerText = '';
-}
-
-
-function handleWordSelection(selectedWord) {
-    const currentQuestion = gameData[currentLevel][currentQuestionIndex];
-    const gameContainer = document.getElementById('game-container'); // Reference to the game container
-
-    if (selectedWord === currentQuestion.correct) {
-        gameContainer.classList.add('flash-green');
-        setTimeout(() => gameContainer.classList.remove('flash-green'), 500);
-        score++;
-        updateDisplay('Correct!');
-        setTimeout(() => updateDisplay(''), 5000);
-        currentQuestionIndex++;
-        
-        if (currentQuestionIndex >= gameData[currentLevel].length) {
-            // Level is completed
-            updateDisplay('Level ' + currentLevel + ' complete! Moving to next level...');
-            finishLevel(); 
-            setTimeout(() => {
-                // Move to the next level after a short delay
-                currentLevel++; // Increment to the next level
-                if (currentLevel <= Object.keys(gameData).length) {
-                    startLevel(currentLevel);
-                } else {
-                    updateDisplay('Congratulations! You have completed all levels.');
-                    // Here you can handle the end of all levels, e.g., hiding game elements or showing a restart option
-                }
-            }, 4000); // 4 seconds delay before starting next level
-        } else {
-            // Move to the next question
-            setTimeout(() => {
-                createWordButtons(gameData[currentLevel][currentQuestionIndex].words);
-            }, 500); // Delay for the flash animation to complete
-        }
-    } else {
-        // Wrong answer
-        gameContainer.classList.add('flash-red');
-        setTimeout(() => gameContainer.classList.remove('flash-red'), 500);
-        mistakes++;
-        updateDisplay('This is a tough one! Try again, or use the Hint button.');
-    }
-}
-
-
-function startLevel(level) {
-    currentLevel = level;
-    currentQuestionIndex = 0;
-    score = 0;
-    mistakes = 0;
-    createWordButtons(gameData[currentLevel][currentQuestionIndex].words);
-    updateDisplay('');
-
-    // Hide the Start Game button
-    document.getElementById('start-button').style.display = 'none';
-
-    document.getElementById('hint-button').style.display = 'block';
-
-    // Set the selected option in the level-select drop-down
-    const levelSelect = document.getElementById('level-select');
-    levelSelect.value = currentLevel.toString(); // Convert currentLevel to a string for comparison
-
-    levelSelect.addEventListener('change', () => startLevel(levelSelect.value));
-}
-
-
-function displayHint() {
-    const currentQuestion = gameData[currentLevel][currentQuestionIndex];
-    if (currentQuestion && currentQuestion.hint) {
-        // Optionally add visual effects here
-        document.getElementById('hint').innerText = currentQuestion.hint;
-    } else {
-        console.error('No hint available for the current question.');
-    }
-}
-
-function finishLevel() {
-    flashImage(); // Display the completion image
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const levelSelect = document.getElementById('level-select');
-
-    for (let i = 1; i <= 18; i++) {
-        const option = document.createElement('option');
-        option.value = i;
-        option.textContent = 'Level ' + i;
-        option.className = getDifficulty(i); // Add the difficulty as a class
-        levelSelect.appendChild(option);
-    }
-    updateLevelSelectBackground(levelSelect); // Initial update of background color
-
-    levelSelect.addEventListener('change', () => {
-        startLevel(levelSelect.value);
-        updateLevelSelectBackground(levelSelect); // Update background on change
-    });
-
-    document.getElementById('start-button').addEventListener('click', () => startLevel(currentLevel));
-    document.getElementById('hint-button').addEventListener('click', displayHint);
-    setupModalEventListeners();
-
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    var fontSelector = document.getElementById('font-selector');
-    if (fontSelector) {
-        fontSelector.addEventListener('change', function() {
-            var selectedFont = this.value;
-            document.body.style.fontFamily = selectedFont;
-
-            // Update the font for the 'odd one out' words (word buttons)
-            var wordButtons = document.querySelectorAll('#word-options button');
-            wordButtons.forEach(function(button) {
-                button.style.fontFamily = selectedFont;
-            });
-        });
-    }
-});
-
-const completionImages = [
-    'images/image1.webp',
-    'images/image2.webp',
-    'images/image3.webp',
-    'images/image4.webp',
-    'images/image5.webp',
-    'images/image6.webp',
-    'images/image7.webp',
-    'images/image8.webp',
-    'images/image9.webp',
-    'images/image10.webp',
-    'images/image11.webp',
-    'images/image12.webp',
-    'images/image13.webp',
-    'images/image14.webp',
-    'images/image15.webp',
-    'images/image16.webp',
-    'images/image17.webp',
-    'images/image18.webp',  
-];
-
-// Shuffle the completionImages array once at the beginning
-shuffleArray(completionImages);
-// Variable to keep track of the current image index
-let currentImageIndex = 0;
-
-function flashImage() {
-    // Delay the execution for 1 second
-    setTimeout(() => {
-        const gameContainer = document.getElementById('game-container');
-        const titleElement = document.querySelector('#game-container h1'); // Select the h1 element inside the game container
-
-        // Directly apply styles to hide the game container and change the title color
-        gameContainer.style.display = 'none';
-        titleElement.style.color = 'black';
-
-        const imageContainer = document.createElement('div');
-        // Add opacity and transition for fade-in effect
-        imageContainer.style.opacity = '0';
-        imageContainer.style.transition = 'opacity 1s ease-in-out';
-
-        imageContainer.style.position = 'absolute';
-        imageContainer.style.zIndex = '1000';
-        imageContainer.style.width = '80%';
-        imageContainer.style.maxWidth = '600px';
-        imageContainer.style.margin = 'auto';
-        imageContainer.style.left = '0';
-        imageContainer.style.right = '0';
-        imageContainer.style.top = '50%';
-        imageContainer.style.transform = 'translateY(-50%)';
-        imageContainer.style.textAlign = 'center';
-        imageContainer.style.borderRadius = '10px';
-        document.body.appendChild(imageContainer);
-
-        const completionMessage = document.createElement('p');
-        completionMessage.innerText = `Well done! You passed Level ${currentLevel}.`;
-        completionMessage.style.fontSize = '24px';
-        completionMessage.style.fontWeight = 'bold';
-        completionMessage.style.marginBottom = '10px';
-        imageContainer.appendChild(completionMessage);
-
-        const clickMessage = document.createElement('p');
-        clickMessage.innerText = "Click anywhere to continue";
-        clickMessage.style.fontSize = '16px';
-        imageContainer.appendChild(clickMessage);
-
-        const imageSrc = completionImages[currentImageIndex];
-        const image = document.createElement('img');
-        image.src = imageSrc;
-        image.alt = 'Flashing Image';
-        image.style.width = '100%';
-        image.style.borderRadius = '10px';
-        imageContainer.appendChild(image);
-
-        // Start the fade-in effect
-        setTimeout(() => imageContainer.style.opacity = '1', 0);
-
-        // Increment the currentImageIndex
-        currentImageIndex = (currentImageIndex + 1) % completionImages.length;
-
-        // Event Listener to remove the image container on click
-        imageContainer.addEventListener('click', () => {
-            document.body.removeChild(imageContainer);
-
-            // Reset styles to show the game container and title
-            gameContainer.style.display = '';
-            titleElement.style.icolor = '';
-        });
-    }, 2000);
-}
-
-function getDifficulty(level) {
-    if (level >= 1 && level <= 3) {
-        return 'easy';
-    } else if (level >= 4 && level <= 11) {
-        return 'medium';
-    } else if (level >= 2 && level <= 18) {
-        return 'mediumhard';
-    } else {
-        return 'hard'
-    }
-}
-
-function updateLevelSelectBackground(levelSelect) {
-    const selectedOption = levelSelect.options[levelSelect.selectedIndex];
-    const difficultyClass = selectedOption.className;
-
-    // Remove all possible difficulty classes
-    levelSelect.classList.remove('easy', 'medium', 'mediumhard', 'hard');
-
-    // Add the new difficulty class
-    if (difficultyClass) {
-        levelSelect.classList.add(difficultyClass);
-    }
-}
-
 let gameData = {
+    "Beginner": {
     "1": [
         {"words": ["cat", "hat", "bat", "dog"], "correct": "dog", "hint": "Three of these words rhyme."},
-        {"words": ["pen", "hen", "ten", "pig"], "correct": "pig", "hint": "Three of these words rhyme."},
-        {"words": ["man", "can", "pan", "dog"], "correct": "dog", "hint": "Three of these words rhyme."},
-        {"words": ["big", "pig", "wig", "bat"], "correct": "bat", "hint": "Three of these words rhyme."},
-        {"words": ["net", "pet", "jet", "sun"], "correct": "sun", "hint": "Three of these words rhyme."},
-        {"words": ["bus", "fuss", "plus", "cat"], "correct": "cat", "hint": "Three of these words rhyme."},
+        {"words": ["pen", "hen", "ten", "tug"], "correct": "tug", "hint": "Three of these words rhyme."},
+        {"words": ["man", "can", "pan", "fog"], "correct": "fog", "hint": "Three of these words rhyme."},
+        {"words": ["big", "pig", "wig", "bag"], "correct": "bag", "hint": "Three of these words rhyme."},
+        {"words": ["net", "pet", "jet", "fun"], "correct": "fun", "hint": "Three of these words rhyme."},
+        {"words": ["bus", "fuss", "plus", "mat"], "correct": "mat", "hint": "Three of these words rhyme."},
         {"words": ["hop", "mop", "top", "man"], "correct": "man", "hint": "Three of these words rhyme."},
-        {"words": ["bag", "tag", "rag", "sun"], "correct": "sun", "hint": "Three of these words rhyme."},
-        {"words": ["bug", "rug", "hug", "hat"], "correct": "hat", "hint": "Three of these words rhyme."},
-        {"words": ["sit", "hit", "kit", "dog"], "correct": "dog", "hint": "Three of these words rhyme."}
+        {"words": ["sag", "tag", "rag", "nun"], "correct": "nun", "hint": "Three of these words rhyme."},
+        {"words": ["bug", "rug", "hug", "hot"], "correct": "hot", "hint": "Three of these words rhyme."},
+        {"words": ["sit", "hit", "kit", "bog"], "correct": "bog", "hint": "Three of these words rhyme."}
     ],
     "2": [
-        {"words": ["fat", "cat", "rat", "bug"], "correct": "bug", "hint": "Three of these words sound rhyme."},
-        {"words": ["bit", "lit", "pit", "man"], "correct": "man", "hint": "Three of these words rhyme."},
-        {"words": ["log", "dog", "fog", "cat"], "correct": "cat", "hint": "Three of these words rhyme."},
-        {"words": ["hat", "bat", "rat", "pig"], "correct": "pig", "hint": "Three of these words rhyme."},
-        {"words": ["jet", "net", "pet", "bus"], "correct": "bus", "hint": "Three of these words rhyme."},
-        {"words": ["mop", "top", "hop", "bug"], "correct": "bug", "hint": "Three of these words rhyme."},
+        {"words": ["fat", "pat", "rat", "mug"], "correct": "mug", "hint": "Three of these words rhyme."},
+        {"words": ["bit", "lit", "pit", "lot"], "correct": "lot", "hint": "Three of these words rhyme."},
+        {"words": ["log", "cog", "fog", "sat"], "correct": "sat", "hint": "Three of these words rhyme."},
+        {"words": ["hat", "bat", "rat", "him"], "correct": "him", "hint": "Three of these words rhyme."},
+        {"words": ["jet", "net", "pet", "pot"], "correct": "pot", "hint": "Three of these words rhyme."},
+        {"words": ["mop", "top", "hop", "hip"], "correct": "hip", "hint": "Three of these words rhyme."},
         {"words": ["cap", "tap", "map", "dog"], "correct": "dog", "hint": "Three of these words rhyme."},
         {"words": ["sun", "bun", "fun", "rat"], "correct": "rat", "hint": "Three of these words rhyme."},
-        {"words": ["rug", "bug", "hug", "net"], "correct": "net", "hint": "Three of these words rhyme."},
-        {"words": ["kit", "sit", "bit", "bus"], "correct": "bus", "hint": "Three of these words rhyme."}
+        {"words": ["rug", "bug", "hug", "beg"], "correct": "beg", "hint": "Three of these words rhyme."},
+        {"words": ["kit", "sit", "bit", "but"], "correct": "but", "hint": "Three of these words rhyme."}
     ],
     "3": [
         {"words": ["cat", "dog", "pig", "box"], "correct": "box", "hint": "Three of these are animals."},
         {"words": ["bed", "rug", "lamp", "ball"], "correct": "ball", "hint": "Three of these are found in a house."},
-        {"words": ["cup", "mug", "pan", "pen"], "correct": "pen", "hint": "Three of these are used in the kitchen."},
+        {"words": ["cup", "mug", "glass", "pen"], "correct": "pen", "hint": "Three of these are used for drinks."},
         {"words": ["bus", "car", "van", "fish"], "correct": "fish", "hint": "Three of these are types of vehicles."},
         {"words": ["hat", "cap", "coat", "moon"], "correct": "moon", "hint": "Three of these are items of clothing."},
         {"words": ["bat", "ball", "net", "sock"], "correct": "sock", "hint": "Three of these are used in sports."},
@@ -340,17 +37,18 @@ let gameData = {
         {"words":["ship", "boat", "raft", "tree"], "correct": "tree", "hint": "Three of these can be found on water."},
         {"words": ["tree", "bush", "flower", "lock"], "correct": "lock", "hint": "Three of these are parts of nature."}
     ],
+    },
+    "Intermediate": {
     
-    
-    "4": [
+    "1": [
         {
             "words": [
                 "February",
                 "January",
                 "March",
-                "summer"
+                "Summer"
             ],
-            "correct": "summer",
+            "correct": "Summer",
             "hint": "Three of these are months of the year."
         },
         {
@@ -371,7 +69,7 @@ let gameData = {
                 "salty"
             ],
             "correct": "salty",
-            "hint": "Three of these are types of confectionery."
+            "hint": "Three of these are sugary treats."
         },
         {
             "words": [
@@ -444,7 +142,7 @@ let gameData = {
             "hint": "Three of these are colours."
         }
     ],
-    "5": [
+    "2": [
         {
             "words": [
                 "purple",
@@ -546,7 +244,7 @@ let gameData = {
             "hint": "Three of these are royal titles."
         }
     ],
-    "6": [
+    "3": [
         {
             "words": [
                 "read",
@@ -648,7 +346,7 @@ let gameData = {
             "hint": "Three of these are farm animals"
         }
     ],
-    "7": [
+    "4": [
         {
             "words": [
                 "phone",
@@ -750,7 +448,7 @@ let gameData = {
             "hint": "Three of these are types of domestic animals."
         }
     ],
-    "8": [
+    "5": [
         {
             "words": [
                 "potato",
@@ -809,7 +507,7 @@ let gameData = {
                 "fruit"
             ],
             "correct": "fruit",
-            "hint": "Three of these are types of fruits."
+            "hint": "Three of these are types of fruit."
         },
         {
             "words": [
@@ -852,15 +550,15 @@ let gameData = {
             "hint": "Three of these are types of flavour."
         }
     ],
-    "9": [
+    "6": [
         {
             "words": [
-                "5",
-                "1",
-                "3",
-                "10"
+                "five",
+                "one",
+                "three",
+                "ten"
             ],
-            "correct": "10",
+            "correct": "ten",
             "hint": "Three of these are odd numbers."
         },
         {
@@ -875,13 +573,13 @@ let gameData = {
         },
         {
             "words": [
-                "15",
-                "5",
-                "10",
-                "18"
+                "three",
+                "six",
+                "nine",
+                "ten"
             ],
-            "correct": "18",
-            "hint": "Three of these are multiples of 5."
+            "correct": "ten",
+            "hint": "Three of these are multiples of three."
         },
         {
             "words": [
@@ -915,12 +613,12 @@ let gameData = {
         },
         {
             "words": [
-                "6",
-                "4",
-                "2",
-                "9"
+                "six",
+                "four",
+                "two",
+                "nine"
             ],
-            "correct": "9",
+            "correct": "nine",
             "hint": "Three of these are even numbers."
         },
         {
@@ -945,16 +643,16 @@ let gameData = {
         },
         {
             "words": [
-                "10",
-                "30",
-                "20",
-                "45"
+                "ten",
+                "thirty",
+                "twenty",
+                "forty-five"
             ],
-            "correct": "45",
-            "hint": "Three of these are multiples of 10."
+            "correct": "forty-five",
+            "hint": "Three of these are multiples of ten."
         }
     ],
-    "10": [
+    "7": [
         {
             "words": [
                 "scarf",
@@ -983,7 +681,7 @@ let gameData = {
                 "mars"
             ],
             "correct": "sun",
-            "hint": "Three of these are celestial bodies."
+            "hint": "Three of these are rocky."
         },
         {
             "words": [
@@ -993,7 +691,7 @@ let gameData = {
                 "fruit"
             ],
             "correct": "fruit",
-            "hint": "Three of these are types of fruits."
+            "hint": "Three of these are types of fruit."
         },
         {
             "words": [
@@ -1003,7 +701,7 @@ let gameData = {
                 "walk"
             ],
             "correct": "walk",
-            "hint": "Three of these are physical actions."
+            "hint": "Three of these are vehicles."
         },
         {
             "words": [
@@ -1013,27 +711,27 @@ let gameData = {
                 "plant"
             ],
             "correct": "plant",
-            "hint": "Three of these are types of flora."
+            "hint": "Three of these are types of plants"
         },
         {
             "words": [
-                "2",
-                "5",
-                "4",
-                "3"
+                "two",
+                "five",
+                "four",
+                "three"
             ],
-            "correct": "4",
+            "correct": "four",
             "hint": "Three of these are prime numbers"
         },
         {
             "words": [
-                "10",
-                "5",
-                "15",
-                "12"
+                "ten",
+                "five",
+                "fifteen",
+                "twelve"
             ],
-            "correct": "12",
-            "hint": "Three of these are multiples of 5"
+            "correct": "twelve",
+            "hint": "Three of these are multiples of five"
         },
         {
             "words": [
@@ -1053,10 +751,10 @@ let gameData = {
                 "ink"
             ],
             "correct": "ink",
-            "hint": "Three of these are common writing instruments."
+            "hint": "Three of these are common writing or drawing instruments."
         }
     ],
-    "11": [
+    "8": [
         {
             "words": [
                 "walk",
@@ -1089,13 +787,13 @@ let gameData = {
         },
         {
             "words": [
-                "cricket",
-                "tennis",
-                "football",
-                "sport"
+                "squash",
+                "badminton",
+                "table tennis",
+                "rugby"
             ],
-            "correct": "sport",
-            "hint": "Three of these are individual sports."
+            "correct": "rugby",
+            "hint": "Three of these are racquet sports."
         },
         {
             "words": [
@@ -1145,20 +843,47 @@ let gameData = {
                 "shape"
             ],
             "correct": "shape",
-            "hint": "Three of these are geometric figures."
+            "hint": "Three of these are types of shapes."
         },
         {
             "words": [
-                "12",
-                "8",
-                "4",
-                "18"
+                "twelve",
+                "eight",
+                "four",
+                "eighteen"
             ],
-            "correct": "18",
-            "hint": "Three of these are divisible by 4."
+            "correct": "eighteen",
+            "hint": "Three of these are multiples of four."
         }
     ],
-    "12": [
+    "9": [
+        {"words": ["Flour", "Flower", "Petal", "Stem"], "correct": "Flour", "hint": "You make cakes with flour, and a flower grows in the garden."},
+        {"words": ["Knight", "Night", "Evening", "Twilight"], "correct": "Knight", "hint": "A knight rides horses, while night comes after sunset."},
+        {"words": ["Mail", "Male", "Female", "Woman"], "correct": "Mail", "hint": "We receive mail in the mailbox, unlike a male, which means a boy or man."},
+        {"words": ["Son", "Sun", "Moon", "Star"], "correct": "Son", "hint": "Your son is a family member, and the sun shines in the sky."},
+        {"words": ["Bare", "Bear", "Lion", "Tiger"], "correct": "Bare", "hint": "You might see a bear in the forest, whereas walking barefoot is fun on the beach."},
+        {"words": ["Sale", "Sail", "Boat", "Ship"], "correct": "Sale", "hint": "A sale means lower prices, while to sail means to travel on a boat."},
+        {"words": ["Right", "Write", "Read", "Speak"], "correct": "Right", "hint": "You write a story with a pen, being right means being correct."},
+        {"words": ["Blue", "Blew", "Green", "Yellow"], "correct": "Blew", "hint": "The wind blew the leaves, under a blue sky."},
+        {"words": ["Meet", "Meat", "Vegetable", "Fruit"], "correct": "Meat", "hint": "Let's meet at the playground and have some meat for lunch."},
+        {"words": ["No", "Know", "Understand", "Realize"], "correct": "No", "hint": "I know the answer is correct, so no need to worry."}
+    ],
+    "10": [
+        {"words": ["Peace", "Piece", "Part", "Segment"], "correct": "Peace", "hint": "Peace is quiet and calm, unlike a puzzle piece that you find."},
+        {"words": ["Sea", "See", "View", "Look"], "correct": "Sea", "hint": "You can see fish in the sea, and I see you smiling."},
+        {"words": ["Tail", "Tale", "Story", "Narrative"], "correct": "Tail", "hint": "A cat's tail is furry, while a tale is a story you read."},
+        {"words": ["Pair", "Pear", "Apple", "Banana"], "correct": "Pear", "hint": "Would you like a pear to eat, or should we pair up for the game?"},
+        {"words": ["Made", "Maid", "Servant", "Butler"], "correct": "Made", "hint": "The maid cleans up rooms, and I made this craft."},
+        {"words": ["Steak", "Stake", "Claim", "Bet"], "correct": "Steak", "hint": "Dinner might be steak, not like the stake in the garden."},
+        {"words": ["Hair", "Hare", "Rabbit", "Bunny"], "correct": "Hair", "hint": "A rabbit has soft hair, and a hare runs in the fields."},
+        {"words": ["Hole", "Whole", "Entire", "Complete"], "correct": "Hole", "hint": "We found a hole in the ground during our whole adventure."},
+        {"words": ["Break", "Brake", "Stop", "Halt"], "correct": "Brake", "hint": "Press the brake to slow down, don't break your toy."},
+        {"words": ["Flower", "Flour", "Bread", "Cake"], "correct": "Flower", "hint": "This flower is pretty in the vase, unlike flour used for baking."}
+    ]
+
+    },
+    "Advanced": {
+    "1": [
         {"words": ["Joyful", "Cheerful", "Sad", "Happy"], "correct": "Sad", "hint": "Three of these words mean feeling very good and smiling."},
         {"words": ["Tiny", "Little", "Big", "Small"], "correct": "Big", "hint": "Three of these words mean not large or not much."},
         {"words": ["Yummy", "Tasty", "Yucky", "Delicious"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
@@ -1170,7 +895,7 @@ let gameData = {
         {"words": ["Hot", "Warm", "Cold", "Heated"], "correct": "Cold", "hint": "Three of these words mean having a high temperature."},
         {"words": ["Wet", "Damp", "Dry", "Moist"], "correct": "Dry", "hint": "Three of these words mean having water or liquid on them."}
     ],
-    "13": [
+    "2": [
         {"words": ["Happy", "Glad", "Upset", "Cheerful"], "correct": "Upset", "hint": "Three of these words mean feeling good and smiling."},
         {"words": ["Huge", "Big", "Tiny", "Large"], "correct": "Tiny", "hint": "Three of these words mean very large."},
         {"words": ["Sour", "Sweet", "Bitter", "Tasty"], "correct": "Sour", "hint": "Three of these words mean good to eat and not bitter or sour."},
@@ -1182,7 +907,7 @@ let gameData = {
         {"words": ["Cold", "Hot", "Warm", "Boiling"], "correct": "Cold", "hint": "Three of these words mean having a high temperature."},
         {"words": ["Dry", "Wet", "Damp", "Moist"], "correct": "Dry", "hint": "Three of these words mean having water or liquid on them."}
     ],
-    "14": [
+    "3": [
         {"words": ["Amusing", "Boring", "Funny", "Hilarious"], "correct": "Boring", "hint": "Three of these words mean making you laugh or smile."},
         {"words": ["Enormous", "Small", "Gigantic", "Vast"], "correct": "Small", "hint": "Three of these words mean very big."},
         {"words": ["Delicious", "Yucky", "Tasty", "Flavourful"], "correct": "Yucky", "hint": "Three of these words mean very good to eat."},
@@ -1195,7 +920,7 @@ let gameData = {
         {"words": ["Soggy", "Dry", "Damp", "Moist"], "correct": "Dry", "hint": "Three of these words mean a little bit wet."}
     ],
 
-    "15": [
+    "4": [
         {"words": ["Tall", "Gargantuan", "Huge", "Petite"], "correct": "Petite", "hint": "Three of these words mean very large."},
         {"words": ["Happy", "Joyful", "Elated", "Morose"], "correct": "Morose", "hint": "Three of these words mean very happy."},
         {"words": ["Fast", "Swift", "Rapid", "Slow"], "correct": "Slow", "hint": "Three of these words mean very quick."},
@@ -1207,7 +932,7 @@ let gameData = {
         {"words": ["Hard", "Difficult", "Easy", "Challenging"], "correct": "Easy", "hint": "Three of these words mean not easy."},
         {"words": ["Silent", "Quiet", "Noisy", "Hushed"], "correct": "Noisy", "hint": "Three of these words mean making little or no noise."}
     ],
-    "16": [
+    "5": [
         {"words": ["Excited", "Thrilled", "Apathetic", "Stoked"], "correct": "Apathetic", "hint": "Three of these words mean very excited."},
         {"words": ["Intelligent", "Smart", "Dull", "Clever"], "correct": "Dull", "hint": "Three of these words mean having good understanding or a high mental capacity."},
         {"words": ["Beautiful", "Gorgeous", "Plain", "Lovely"], "correct": "Plain", "hint": "Three of these words mean aesthetically pleasing."},
@@ -1219,7 +944,9 @@ let gameData = {
         {"words": ["Optimistic", "Hopeful", "Pessimistic", "Confident"], "correct": "Pessimistic", "hint": "Three of these words mean expecting good outcomes."},
         {"words": ["Neat", "Orderly", "Messy", "Tidy"], "correct": "Messy", "hint": "Three of these words mean arranged in a tidy way."}
     ],
-    "17": [
+    },
+    "Expert": {
+    "1": [
         {"words": ["Euphoric", "Miserable", "Ecstatic", "Elated"], "correct": "Miserable", "hint": "Three of these words mean feeling extremely happy."},
         {"words": ["Minuscule", "Enormous", "Petite", "Tiny"], "correct": "Enormous", "hint": "Three of these words mean very small."},
         {"words": ["Abhorrent", "Appealing", "Repulsive", "Disgusting"], "correct": "Appealing", "hint": "Three of these words mean causing a strong feeling of dislike."},
@@ -1231,7 +958,7 @@ let gameData = {
         {"words": ["Blistering", "Frigid", "Sweltering", "Torrid"], "correct": "Frigid", "hint": "Three of these words mean extremely hot."},
         {"words": ["Saturated", "Parched", "Soaked", "Drenched"], "correct": "Parched", "hint": "Three of these words mean very wet."}
     ],
-    "18": [
+    "2": [
         {"words": ["Cacophonous", "Harmonious", "Discordant", "Clamorous"], "correct": "Harmonious", "hint": "Three of these words mean having a harsh, often unpleasantly loud sound."},
         {"words": ["Invisible", "Overt", "Conspicuous", "Prominent"], "correct": "Invisible", "hint": "Three of these words mean very easy to see or notice."},
         {"words": ["Nefarious", "Virtuous", "Heinous", "Villainous"], "correct": "Virtuous", "hint": "Three of these words mean extremely wicked or villainous."},
@@ -1243,7 +970,7 @@ let gameData = {
         {"words": ["Arctic", "Tropical", "Torrid", "Sweltering"], "correct": "Arctic", "hint": "Three of these words mean very hot, especially to the point of causing discomfort."},
         {"words": ["Parched", "Sodden", "Saturated", "Soaked"], "correct": "Parched", "hint": "Three of these words mean thoroughly wet."}
     ],
-    "19": [
+    "3": [
         {"words": ["Gregarious", "Introverted", "Sociable", "Convivial"], "correct": "Introverted", "hint": "Three of these words mean enjoying the company of others."},
         {"words": ["Luminous", "Dim", "Radiant", "Glowing"], "correct": "Dim", "hint": "Three of these words mean bright or giving off light."},
         {"words": ["Deleterious", "Beneficial", "Harmful", "Detrimental"], "correct": "Beneficial", "hint": "Three of these words mean causing harm or damage."},
@@ -1255,7 +982,7 @@ let gameData = {
         {"words": ["Inferno", "Blizzard", "Conflagration", "Wildfire"], "correct": "Blizzard", "hint": "Three of these words mean a very large and destructive fire."},
         {"words": ["Arduous", "Easy", "Demanding", "Laborious"], "correct": "Easy", "hint": "Three of these words mean requiring a lot of hard work."}
     ]  ,
-    "20": [
+    "4": [
         {"words": ["Melancholy", "Joyful", "Sorrowful", "Gloomy"], "correct": "Joyful", "hint": "Three of these words mean feeling sad."},
         {"words": ["Transparent", "Opaque", "Clear", "Lucid"], "correct": "Opaque", "hint": "Three of these words mean you can see through them."},
         {"words": ["Malevolent", "Kind", "Nasty", "Wicked"], "correct": "Kind", "hint": "Three of these words mean not nice."},
@@ -1267,17 +994,348 @@ let gameData = {
         {"words": ["Drought", "Deluge", "Downpour", "Flood"], "correct": "Drought", "hint": "Three of these words mean a lot of rain."},
         {"words": ["Simple", "Complex", "Complicated", "Intricate"], "correct": "Simple", "hint": "Three of these words mean not easy to understand."}
     ],
-    "21": [
+    "5": [
         {"words": ["Magnanimous", "Selfish", "Generous", "Altruistic"], "correct": "Selfish", "hint": "Three of these words mean very giving and kind."},
         {"words": ["Invisible", "Visible", "Transparent", "See-through"], "correct": "Invisible", "hint": "Three of these words mean you can see it."},
         {"words": ["Humid", "Dry", "Muggy", "Moist"], "correct": "Dry", "hint": "Three of these words mean having a lot of moisture in the air."},
         {"words": ["Ancient", "New", "Old", "Antique"], "correct": "New", "hint": "Three of these words mean very old."},
         {"words": ["Scarce", "Abundant", "Rare", "Limited"], "correct": "Abundant", "hint": "Three of these words mean there isn’t much of it."},
         {"words": ["Boisterous", "Quiet", "Loud", "Rambunctious"], "correct": "Quiet", "hint": "Three of these words mean making a lot of noise."},
-        {"words": ["Vivid", "Dull", "Bright", "Colorful"], "correct": "Dull", "hint": "Three of these words mean having strong or bright colors."},
+        {"words": ["Vivid", "Dull", "Bright", "Colourful"], "correct": "Dull", "hint": "Three of these words mean having strong or bright colors."},
         {"words": ["Barren", "Fertile", "Unproductive", "Sterile"], "correct": "Fertile", "hint": "Three of these words mean not good for growing plants."},
         {"words": ["Arid", "Wet", "Dry", "Parched"], "correct": "Wet", "hint": "Three of these words mean very dry."},
         {"words": ["Rapid", "Slow", "Swift", "Fast"], "correct": "Slow", "hint": "Three of these words mean moving or happening quickly."}
     ]  
 }
+}
 
+
+let currentDifficulty = "Beginner"; // Default difficulty
+let currentLevel = "1"; // Default level
+let currentQuestionIndex = 0;
+let score = 0;
+let mistakes = 0;
+let hintUsed = false;
+const gameContainer = document.getElementById('game-container');
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function createWordButtons(words) {
+    const wordOptionsContainer = document.getElementById('word-options');
+    wordOptionsContainer.innerHTML = '';
+    hintUsed = false;
+    shuffleArray(words);
+
+    // Define a set of vibrant colors
+    const colors = [
+        '#007bff', // Bright Blue
+        '#17a2b8', // Teal
+        '#fd7e14', // Orange
+        '#6f42c1', // Purple
+        '#20c997', // Mint Green
+        '#FF7F50', // Coral
+        '#FF00FF'  // Pink
+    ];
+
+    // Select a random color for all buttons
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    const buttonColor = colors[randomColorIndex];
+
+    // Calculate the total number of letters in all words
+    const totalLetters = words.reduce((total, word) => total + word.length, 0);
+
+    // Adjust font size based on the total number of letters
+    let buttonFontSize = '30px'; // Default font size
+    if (totalLetters > 24 && totalLetters < 34) { // Threshold can be adjusted based on your layout
+        buttonFontSize = '24px'; // Smaller font size for more letters
+    }
+    if (totalLetters > 34 ) { // Threshold can be adjusted based on your layout
+        buttonFontSize = '20px'; // Smaller font size for more letters
+    }
+    // Further adjustments can be made based on different thresholds if needed
+
+    words.forEach((word) => {
+        const button = document.createElement('button');
+        button.innerText = word;
+        button.style.fontFamily = document.getElementById('font-selector').value;
+        button.style.backgroundColor = buttonColor;
+        button.style.color = 'white';
+        button.style.fontSize = buttonFontSize;
+
+        button.addEventListener('click', () => handleWordSelection(word));
+        wordOptionsContainer.appendChild(button);
+    });
+}
+
+
+function updateDisplay(message) {
+    const messageElement = document.getElementById('message');
+    messageElement.innerHTML = message || '&nbsp;'; // Replace an empty message with a non-breaking space
+    document.getElementById('score').innerText = 'Score: ' + score;
+    document.getElementById('mistakes').innerText = 'Mistakes: ' + mistakes;
+    document.getElementById('hint').innerText = '';
+}
+
+
+function handleWordSelection(selectedWord) {
+    const currentQuestion = gameData[currentDifficulty][currentLevel][currentQuestionIndex];
+
+    if (selectedWord === currentQuestion.correct) {
+        gameContainer.classList.add('flash-green');
+        setTimeout(() => gameContainer.classList.remove('flash-green'), 500);
+        score++;
+        updateDisplay('Correct!');
+        setTimeout(() => updateDisplay(''), 5000);
+        currentQuestionIndex++;
+        
+        if (currentQuestionIndex >= gameData[currentDifficulty][currentLevel].length) {
+            updateDisplay('Round ' + currentLevel + ' complete! Moving to next level...');
+            finishLevel(); 
+            let nextLevel = parseInt(currentLevel) + 1;
+            if (nextLevel <= Object.keys(gameData[currentDifficulty]).length) {
+                setTimeout(() => {
+                    startLevel(currentDifficulty, String(nextLevel));
+                }, 4000);
+            } else {
+                updateDisplay('Congratulations! You have completed all levels.');
+            }
+        } else {
+            setTimeout(() => {
+                createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
+            }, 500);
+        }
+    } else {
+        gameContainer.classList.add('flash-red');
+        setTimeout(() => gameContainer.classList.remove('flash-red'), 500);
+        mistakes++;
+        updateDisplay('This is a tough one! Try again, or use the Hint button.');
+    }
+}
+
+
+
+function startLevel(difficulty, level) {
+    currentDifficulty = difficulty;
+    currentLevel = String(level); // Ensure level is a string
+    currentQuestionIndex = 0;
+    score = 0;
+    mistakes = 0;
+
+    // Update the level dropdown to reflect the new level
+    const levelSelect = document.getElementById('level-select');
+    levelSelect.value = currentLevel;
+
+    if (!gameData[currentDifficulty] || !gameData[currentDifficulty][currentLevel]) {
+        console.error('Invalid difficulty or level');
+        return;
+    }
+
+    createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
+    updateDisplay('');
+    document.getElementById('start-button').style.display = 'none';
+    document.getElementById('instructions-button').style.display = 'none';
+    document.getElementById('hint-button').style.display = 'block';
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate difficulties and levels
+    populateDifficulties();
+    populateLevels(currentDifficulty);
+
+    // Set up event listeners for dropdowns and buttons
+    const difficultySelect = document.getElementById('difficulty-selector');
+    const levelSelect = document.getElementById('level-select');
+
+    difficultySelect.addEventListener('change', () => {
+        const selectedDifficulty = difficultySelect.value;
+        populateLevels(selectedDifficulty);
+    });
+
+    levelSelect.addEventListener('change', () => {
+        const selectedDifficulty = difficultySelect.value;
+        const selectedLevel = levelSelect.value;
+        currentLevel = selectedLevel; // Update the current level without starting the game
+    });
+
+    document.getElementById('start-button').addEventListener('click', () => {
+        const selectedDifficulty = difficultySelect.value;
+        const selectedLevel = levelSelect.value;
+        startLevel(selectedDifficulty, selectedLevel);
+    });
+
+    document.getElementById('hint-button').addEventListener('click', displayHint);
+
+    // Font selector logic
+    var fontSelector = document.getElementById('font-selector');
+    if (fontSelector) {
+        fontSelector.addEventListener('change', function() {
+            var selectedFont = this.value;
+            document.body.style.fontFamily = selectedFont;
+            var wordButtons = document.querySelectorAll('#word-options button');
+            wordButtons.forEach(function(button) {
+                button.style.fontFamily = selectedFont;
+            });
+        });
+    }
+
+    // Any additional initialization code can go here
+});
+
+
+function populateLevels(difficulty) {
+    const levelSelect = document.getElementById('level-select');
+    levelSelect.innerHTML = '';
+
+    const levels = gameData[difficulty];
+    Object.keys(levels).forEach(level => {
+        const option = document.createElement('option');
+        option.value = level;
+        option.textContent = 'Round ' + level;
+        levelSelect.appendChild(option);
+    });
+
+    levelSelect.value = "1"; // Default to Level 1 as a string
+}
+
+
+function displayHint() {
+    const currentQuestion = gameData[currentDifficulty][currentLevel][currentQuestionIndex];
+    if (currentQuestion && currentQuestion.hint) {
+        // Optionally add visual effects here
+        document.getElementById('hint').innerText = currentQuestion.hint;
+    } else {
+        console.error('No hint available for the current question.');
+    }
+}
+
+function finishLevel() {
+    flashImage(); // Display the completion image
+}
+
+
+const completionImages = [
+    'images/image1.webp',
+    'images/image2.webp',
+    'images/image3.webp',
+    'images/image4.webp',
+    'images/image5.webp',
+    'images/image6.webp',
+    'images/image7.webp',
+    'images/image8.webp',
+    'images/image9.webp',
+    'images/image10.webp',
+    'images/image11.webp',
+    'images/image12.webp',
+    'images/image13.webp',
+    'images/image14.webp',
+    'images/image15.webp',
+    'images/image16.webp',
+    'images/image17.webp',
+    'images/image18.webp',
+    'images/image19.webp',
+    'images/image20.webp',
+    'images/image21.webp',
+    'images/image22.webp',
+    'images/image23.webp',
+    'images/image24.webp',
+    'images/image25.webp'  
+];
+
+// Shuffle the completionImages array once at the beginning
+shuffleArray(completionImages);
+// Variable to keep track of the current image index
+let currentImageIndex = 0;
+
+function flashImage() {
+    // Delay the execution for 1 second
+    setTimeout(() => {
+        const gameContainer = document.getElementById('game-container');
+        const titleElement = document.querySelector('#game-container h1'); // Select the h1 element inside the game container
+
+        // Directly apply styles to hide the game container and change the title color
+        gameContainer.style.display = 'none';
+        titleElement.style.color = 'black';
+
+        const imageContainer = document.createElement('div');
+        // Add opacity and transition for fade-in effect
+        imageContainer.style.opacity = '0';
+        imageContainer.style.transition = 'opacity 1s ease-in-out';
+
+        imageContainer.style.position = 'absolute';
+        imageContainer.style.zIndex = '1000';
+        imageContainer.style.width = '80%';
+        imageContainer.style.maxWidth = '600px';
+        imageContainer.style.margin = 'auto';
+        imageContainer.style.left = '0';
+        imageContainer.style.right = '0';
+        imageContainer.style.top = '50%';
+        imageContainer.style.transform = 'translateY(-50%)';
+        imageContainer.style.textAlign = 'center';
+        imageContainer.style.borderRadius = '10px';
+        document.body.appendChild(imageContainer);
+
+        const completionMessage = document.createElement('p');
+        completionMessage.innerText = `Well done! You passed Level ${currentLevel}.`;
+        completionMessage.style.fontSize = '24px';
+        completionMessage.style.fontWeight = 'bold';
+        completionMessage.style.marginBottom = '10px';
+        imageContainer.appendChild(completionMessage);
+
+        const clickMessage = document.createElement('p');
+        clickMessage.innerText = "Click anywhere to continue";
+        clickMessage.style.fontSize = '16px';
+        imageContainer.appendChild(clickMessage);
+
+        const imageSrc = completionImages[currentImageIndex];
+        const image = document.createElement('img');
+        image.src = imageSrc;
+        image.alt = 'Flashing Image';
+        image.style.width = '100%';
+        image.style.borderRadius = '10px';
+        imageContainer.appendChild(image);
+
+        // Start the fade-in effect
+        setTimeout(() => imageContainer.style.opacity = '1', 0);
+
+        // Increment the currentImageIndex
+        currentImageIndex = (currentImageIndex + 1) % completionImages.length;
+
+        // Event Listener to remove the image container on click
+        imageContainer.addEventListener('click', () => {
+            document.body.removeChild(imageContainer);
+
+            // Reset styles to show the game container and title
+            gameContainer.style.display = '';
+            titleElement.style.color = '';
+        });
+    }, 2000);
+}
+
+function populateDifficulties() {
+    const difficultySelect = document.getElementById('difficulty-selector');
+    difficultySelect.innerHTML = ''; // Clear existing options
+
+    Object.keys(gameData).forEach(difficulty => {
+        const option = document.createElement('option');
+        option.value = difficulty;
+        option.textContent = difficulty;
+        difficultySelect.appendChild(option);
+    });
+}
+
+document.getElementById('instructions-button').addEventListener('click', function() {
+    document.getElementById('instructions-container').style.display = 'block';
+});
+
+document.getElementById('close-instructions').addEventListener('click', function() {
+    document.getElementById('instructions-container').style.display = 'none';
+});

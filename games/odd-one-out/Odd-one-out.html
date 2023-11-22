@@ -13,17 +13,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odd One Out Game</title>
-    
-<link href="https://fonts.googleapis.com/css2?family=Andika&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
-
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Andika&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Font Selection Dropdown -->
-    <div style="position: absolute; top: 10px; left: 10px;">
+    <!-- Left-hand Side Controls (Level and Round) -->
+    <div id="left-controls" style="top: 10px; left: 10px;">
+        <div id="difficulty-select-container">
+            <label for="difficulty-selector">Level:</label>
+            <select id="difficulty-selector">
+                <!-- Difficulty options will be added dynamically -->
+            </select>
+        </div>
+        <div id="level-select-container">
+            <label for="level-select">Round:</label>
+            <select id="level-select">
+                <!-- Round options will be added dynamically -->
+            </select>
+        </div>
+    </div>
+    <!-- Right-hand Side Controls (Font Selector) -->
+    <div id="right-controls" style="top: 10px; right: 10px;">
+        <label for="font-selector">Font:</label>
         <select id="font-selector">
             <option value="Andika">Andika</option>
             <option value="Arial">Arial</option>
@@ -32,17 +44,11 @@
             <option value="OpenDyslexic3-Regular">OpenDyslexic Regular</option>
             <option value="OpenDyslexic3-Bold">OpenDyslexic Bold</option>
         </select>
+       
     </div>
-    
 
     <div id="game-container">
-        <h1>Odd One Out Game</h1>
-        <div id="level-select-container">
-            <label for="level-select">Choose a level:</label>
-            <select id="level-select">
-                <!-- Options will be added dynamically -->
-            </select>
-        </div>
+        <h1>Odd One Out</h1>
         <div id="score-container">
             <p id="score">Score: 0</p>
             <p id="mistakes">Mistakes: 0</p>
@@ -56,16 +62,56 @@
         <div id="word-options">
             <!-- Word buttons will be dynamically created here -->
         </div>
-        <button id="start-button">Start Game</button>
+        <div class="button-container">
+            <button id="start-button">Start Game</button>
+            <button id="instructions-button">Instructions</button>
+        </div>
         <button id="hint-button">Hint</button>
     </div>
-    
+<!-- Instructions Overlay -->
+<div id="instructions-container" style="display: none;">
+    <div class="instructions-content">
+        <h2>Game Instructions</h2>
+
+        <h3>Objective:</h3>
+        <p>Find the word or number that is the odd one out of a group of four.</p>
+        
+        <h3>How to Play:</h3>
+        <ul>
+            <li>Choose a Level and Round, then click on "Start Game" to begin.</li>
+            <li>Click on the word from each set that doesn't belong with the others.</li>
+            <li>Each correct answer increases your score; mistakes are counted.</li>
+            <li>At the end of each Round, a fun picture will pop up as a reward.</li>
+        </ul>
+
+        <h3>Features:</h3>
+        <ul>
+            <li>
+                <strong>Difficulty Levels:</strong> Select different difficulty levels to match the player.
+                <ul>
+                    <li>Beginner: Simple CVC (Consonant-Vowel-Consonant), CVCC, and CCVC words. Three will rhyme, and one does not.</li>
+                    <li>Intermediate: Longer words, three of which belong to a category, or one of which is a homophone.</li>
+                    <li>Advanced: Aimed at building vocabulary, typically three are synonyms.</li>
+                    <li>Expert: Less common words, also aimed at building vocabulary. Fun for the whole family!</li>
+                </ul>
+            </li>
+            <li><strong>Font Selection:</strong> Choose a font to build familiarity with different writing styles. Andika is ideal for early readers, while cursive and OpenDyslexic fonts are also available.</li>
+            <li><strong>Hint Button:</strong> Get clues when needed, as some questions are ambiguous or tricky. They are a good opportunity for more reading practice.</li>
+        </ul>
+
+        <h3>For Parents:</h3>
+        <p>Encourage children to explain the connection between the three linked words. This helps develop critical thinking and language skills, and you may be surprised by their thinking!</p>
+        
+        <button id="close-instructions">Close Instructions</button>
+    </div>
+</div>
+
+
     <img id="flash-image" src="images/image1.webp" alt="Flashing Image" style="display: none; position: absolute; z-index: 1000;">
-
-
     <script src="script.js"></script>
 </body>
 </html>
+
 
 <!-- 
     Copyright © 2023 Laurence Toime
