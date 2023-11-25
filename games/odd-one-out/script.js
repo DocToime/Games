@@ -874,22 +874,22 @@ let gameData = {
         {"words": ["Peace", "Piece", "Part", "Segment"], "correct": "Peace", "hint": "Peace is quiet and calm, unlike a puzzle piece that you find."},
         {"words": ["Sea", "See", "View", "Look"], "correct": "Sea", "hint": "You can see fish in the sea, and I see you smiling."},
         {"words": ["Tail", "Tale", "Story", "Narrative"], "correct": "Tail", "hint": "A cat's tail is furry, while a tale is a story you read."},
-        {"words": ["Pair", "Pear", "Apple", "Banana"], "correct": "Pear", "hint": "Would you like a pear to eat, or should we pair up for the game?"},
+        {"words": ["Pair", "Pear", "Apple", "Banana"], "correct": "Pair", "hint": "Would you like a pear to eat, or should we pair up for the game?"},
         {"words": ["Made", "Maid", "Servant", "Butler"], "correct": "Made", "hint": "The maid cleans up rooms, and I made this craft."},
-        {"words": ["Steak", "Stake", "Claim", "Bet"], "correct": "Steak", "hint": "Dinner might be steak, not like the stake in the garden."},
+        {"words": ["Steak", "Stake", "Claim", "Bet"], "correct": "Steak", "hint": "Dinner might be steak, but I wouldn't stake my reputation on it."},
         {"words": ["Hair", "Hare", "Rabbit", "Bunny"], "correct": "Hair", "hint": "A rabbit has soft hair, and a hare runs in the fields."},
         {"words": ["Hole", "Whole", "Entire", "Complete"], "correct": "Hole", "hint": "We found a hole in the ground during our whole adventure."},
-        {"words": ["Break", "Brake", "Stop", "Halt"], "correct": "Brake", "hint": "Press the brake to slow down, don't break your toy."},
+        {"words": ["Break", "Brake", "Stop", "Halt"], "correct": "Break", "hint": "Press the brake to slow down, or you might break your toy."},
         {"words": ["Flower", "Flour", "Bread", "Cake"], "correct": "Flower", "hint": "This flower is pretty in the vase, unlike flour used for baking."}
     ],
     "3": [
         {"words": ["Wait", "Weight", "Heavy", "Light"], "correct": "Weight", "hint": "You might wait for your turn, but weight is how heavy something is."},
         {"words": ["Stationary", "Stationery", "Pen", "Pencil"], "correct": "Stationary", "hint": "You write with stationery like pens, but stationary means not moving."},
         {"words": ["Rose", "Rows", "Lines", "Stripes"], "correct": "Rose", "hint": "A rose is a beautiful flower, while rows are lines of things in order."},
-        {"words": ["Throne", "Thrown", "Cast", "Toss"], "correct": "Thrown", "hint": "A king sits on a throne, while thrown means something was tossed."},
+        {"words": ["Throne", "Thrown", "Cast", "Toss"], "correct": "Throne", "hint": "A king sits on a throne, while thrown means something was tossed."},
         {"words": ["Paws", "Pause", "Stop", "Go"], "correct": "Paws", "hint": "Cats have paws to walk with, but we pause a movie to stop it for a while."},
         {"words": ["Hear", "Here", "There", "Where"], "correct": "Hear", "hint": "You can hear with your ears, but here is the place where we are."},
-        {"words": ["One", "Won", "Lost", "Found"], "correct": "Won", "hint": "You have one apple, but won means you came first in a game."},
+        {"words": ["One", "Won", "Received", "Gained"], "correct": "One", "hint": "You have one apple, but won means you came first in a game."},
         {"words": ["Maze", "Maize", "Corn", "Wheat"], "correct": "Maize", "hint": "A maze is a puzzle to walk through, while maize is another word for corn."},
         {"words": ["Principal", "Principle", "Rule", "Guideline"], "correct": "Principal", "hint": "The principal runs our school, but a principle is an important rule."},
         {"words": ["Hole", "Whole", "Entire", "Part"], "correct": "Hole", "hint": "You might dig a hole in the ground, but whole means all of something."}
@@ -1109,14 +1109,7 @@ function handleWordSelection(selectedWord) {
         if (currentQuestionIndex >= gameData[currentDifficulty][currentLevel].length) {
             updateDisplay('Round ' + currentLevel + ' complete! Moving to next level...');
             finishLevel(); 
-            let nextLevel = parseInt(currentLevel) + 1;
-            if (nextLevel <= Object.keys(gameData[currentDifficulty]).length) {
-                setTimeout(() => {
-                    startLevel(currentDifficulty, String(nextLevel));
-                }, 4000);
-            } else {
-                updateDisplay('Congratulations! You have completed all levels.');
-            }
+            // Removed the next level start logic here as it's now handled in flashImage
         } else {
             setTimeout(() => {
                 createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
@@ -1132,6 +1125,7 @@ function handleWordSelection(selectedWord) {
 
 
 
+
 function startLevel(difficulty, level) {
     currentDifficulty = difficulty;
     currentLevel = String(level); // Ensure level is a string
@@ -1139,10 +1133,13 @@ function startLevel(difficulty, level) {
     score = 0;
     mistakes = 0;
 
-    // Update the level dropdown to reflect the new level
+    // Update the difficulty and level dropdowns to reflect the new difficulty and level
+    const difficultySelect = document.getElementById('difficulty-selector');
     const levelSelect = document.getElementById('level-select');
+    difficultySelect.value = currentDifficulty;
     levelSelect.value = currentLevel;
 
+    // Additional logic to handle invalid difficulty or level
     if (!gameData[currentDifficulty] || !gameData[currentDifficulty][currentLevel]) {
         console.error('Invalid difficulty or level');
         return;
@@ -1153,9 +1150,10 @@ function startLevel(difficulty, level) {
     document.getElementById('start-button').style.display = 'none';
     document.getElementById('instructions-button').style.display = 'none';
     document.getElementById('hint-button').style.display = 'block';
-        // Show the hint button when the game starts
+    // Show the hint button when the game starts
     document.getElementById('hint-button').style.display = 'block';
 }
+
 
 
 
@@ -1170,16 +1168,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const levelSelect = document.getElementById('level-select');
 
     difficultySelect.addEventListener('change', () => {
-        const selectedDifficulty = difficultySelect.value;
-        populateLevels(selectedDifficulty);
+        populateLevels(difficultySelect.value); // Populate levels based on the selected difficulty
+        showStartNewGameButton();
     });
 
-    levelSelect.addEventListener('change', () => {
+    levelSelect.addEventListener('change', showStartNewGameButton);
+
+    function showStartNewGameButton() {
+        document.getElementById('start-new-game').style.display = 'block';
+    }
+
+    document.getElementById('start-new-game').addEventListener('click', () => {
         const selectedDifficulty = difficultySelect.value;
         const selectedLevel = levelSelect.value;
-        startLevel(selectedDifficulty, selectedLevel); // Update the current level without starting the game
+        startLevel(selectedDifficulty, selectedLevel);
+        document.getElementById('start-new-game').style.display = 'none'; // Hide the button after starting the game
     });
-
     document.getElementById('start-button').addEventListener('click', () => {
         const selectedDifficulty = difficultySelect.value;
         const selectedLevel = levelSelect.value;
@@ -1201,8 +1205,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Any additional initialization code can go here
 });
+
 
 
 function populateLevels(difficulty) {
@@ -1261,29 +1265,34 @@ const completionImages = [
     'images/image22.webp',
     'images/image23.webp',
     'images/image24.webp',
-    'images/image25.webp'  
+    'images/image25.webp',
+    'images/image26.webp',
+    'images/image27.webp',
+    'images/image28.webp',
+    'images/image29.webp',
+    'images/image30.webp',
+    'images/image31.webp',
+    'images/image32.webp',
+    'images/image33.webp',
+    'images/image34.webp',
+    'images/image35.webp', 
 ];
-
 // Shuffle the completionImages array once at the beginning
 shuffleArray(completionImages);
 // Variable to keep track of the current image index
 let currentImageIndex = 0;
 
 function flashImage() {
-    // Delay the execution for 1 second
     setTimeout(() => {
         const gameContainer = document.getElementById('game-container');
-        const titleElement = document.querySelector('#game-container h1'); // Select the h1 element inside the game container
+        const titleElement = document.querySelector('#game-container h1');
 
-        // Directly apply styles to hide the game container and change the title color
         gameContainer.style.display = 'none';
         titleElement.style.color = 'black';
 
         const imageContainer = document.createElement('div');
-        // Add opacity and transition for fade-in effect
         imageContainer.style.opacity = '0';
         imageContainer.style.transition = 'opacity 1s ease-in-out';
-
         imageContainer.style.position = 'absolute';
         imageContainer.style.zIndex = '1000';
         imageContainer.style.width = '80%';
@@ -1317,22 +1326,34 @@ function flashImage() {
         image.style.borderRadius = '10px';
         imageContainer.appendChild(image);
 
-        // Start the fade-in effect
         setTimeout(() => imageContainer.style.opacity = '1', 0);
 
-        // Increment the currentImageIndex
         currentImageIndex = (currentImageIndex + 1) % completionImages.length;
 
-        // Event Listener to remove the image container on click
+        // Event Listener to remove the image container on click and progress to the next level/difficulty
         imageContainer.addEventListener('click', () => {
             document.body.removeChild(imageContainer);
-
-            // Reset styles to show the game container and title
             gameContainer.style.display = '';
             titleElement.style.color = '';
+
+            let nextLevel = parseInt(currentLevel) + 1;
+            let difficulties = Object.keys(gameData);
+            let currentDifficultyIndex = difficulties.indexOf(currentDifficulty);
+
+            if (nextLevel > Object.keys(gameData[currentDifficulty]).length) {
+                if (currentDifficultyIndex < difficulties.length - 1) {
+                    let nextDifficulty = difficulties[currentDifficultyIndex + 1];
+                    startLevel(nextDifficulty, "1"); // Start first level of the next difficulty
+                } else {
+                    updateDisplay('Congratulations! You have completed all levels and difficulties.');
+                }
+            } else {
+                startLevel(currentDifficulty, String(nextLevel));
+            }
         });
     }, 2000);
 }
+
 
 function populateDifficulties() {
     const difficultySelect = document.getElementById('difficulty-selector');

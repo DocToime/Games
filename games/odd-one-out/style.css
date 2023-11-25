@@ -55,8 +55,13 @@ button:hover {
     top: 10px;
     left: 10px;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+}
+
+.dropdowns-container {
+    display: flex; /* Make the dropdowns align side by side */
+    gap: 10px; /* Space between the dropdowns */
 }
 
 /* Right-hand Side Controls (Font Selector) */
