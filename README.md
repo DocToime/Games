@@ -1,5 +1,5 @@
 
-# My Game Collection
+# Dr T's Game Collection
 
 Welcome to my game collection. This repository hosts a few simple games for young children that I've developed. Typically they are designed to gameify learning core skills like reading and critical thinking. Feel free to explore and enjoy.
 
