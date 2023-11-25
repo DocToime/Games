@@ -1065,10 +1065,10 @@ function createWordButtons(words) {
     // Adjust font size based on the total number of letters
     let buttonFontSize = '30px'; // Default font size
     if (totalLetters > 24 && totalLetters < 34) { // Threshold can be adjusted based on your layout
-        buttonFontSize = '24px'; // Smaller font size for more letters
+        buttonFontSize = '26px'; // Smaller font size for more letters
     }
     if (totalLetters > 34 ) { // Threshold can be adjusted based on your layout
-        buttonFontSize = '20px'; // Smaller font size for more letters
+        buttonFontSize = '22px'; // Smaller font size for more letters
     }
     // Further adjustments can be made based on different thresholds if needed
 
@@ -1105,7 +1105,7 @@ function handleWordSelection(selectedWord) {
         updateDisplay('Correct!');
         setTimeout(() => updateDisplay(''), 5000);
         currentQuestionIndex++;
-        
+                
         if (currentQuestionIndex >= gameData[currentDifficulty][currentLevel].length) {
             updateDisplay('Round ' + currentLevel + ' complete! Moving to next level...');
             finishLevel(); 
@@ -1120,6 +1120,11 @@ function handleWordSelection(selectedWord) {
         setTimeout(() => gameContainer.classList.remove('flash-red'), 500);
         mistakes++;
         updateDisplay('This is a tough one! Try again, or use the Hint button.');
+        // Google Analytics Event for a Mistake
+        gtag('event', 'make_mistake', {
+            'event_category': 'Game Actions',
+            'event_label': `Mistake Made - Difficulty: ${currentDifficulty}, Level: ${currentLevel}, Question: ${currentQuestionIndex}`
+        });
     }
 }
 
@@ -1152,6 +1157,11 @@ function startLevel(difficulty, level) {
     document.getElementById('hint-button').style.display = 'block';
     // Show the hint button when the game starts
     document.getElementById('hint-button').style.display = 'block';
+
+    gtag('event', 'start_game', {
+        'event_category': 'Game Actions',
+        'event_label': `Game Started - Difficulty: ${difficulty}, Level: ${level}`
+    });
 }
 
 
@@ -1233,10 +1243,18 @@ function displayHint() {
     } else {
         console.error('No hint available for the current question.');
     }
+    gtag('event', 'use_hint', {
+        'event_category': 'Game Actions',
+        'event_label': `Hint Used - Difficulty: ${currentDifficulty}, Level: ${currentLevel}`
+    });
 }
 
 function finishLevel() {
     flashImage(); // Display the completion image
+    gtag('event', 'finish_level', {
+        'event_category': 'Game Actions',
+        'event_label': `Level Completed - Difficulty: ${currentDifficulty}, Level: ${currentLevel}`
+    });
 }
 
 
