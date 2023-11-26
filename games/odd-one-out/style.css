@@ -173,22 +173,6 @@ label {
     font-style: normal;
 }
 
-#instructions-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001; /* Ensure it's above other content */
-    overflow-y: auto;
-}
-
 .instructions-content {
     background-color: #333; /* Same as game container */
     color: white;
@@ -196,11 +180,26 @@ label {
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
-    max-height: 80vh;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Same as game container */
     text-align: left; /* Align text to the left */
     margin: auto; /* Center the box */
+    overflow-y: auto; /* Add scroll if content is too long */
 }
+
+#instructions-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001; /* Ensure it's above other content */
+}
+
 
 .instructions-content h2 {
     margin-top: 0;
