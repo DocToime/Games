@@ -1067,7 +1067,7 @@ function createWordButtons(words) {
     if (totalLetters > 24 && totalLetters < 34) { // Threshold can be adjusted based on your layout
         buttonFontSize = '26px'; // Smaller font size for more letters
     }
-    if (totalLetters > 34 ) { // Threshold can be adjusted based on your layout
+    if (totalLetters > 33 ) { // Threshold can be adjusted based on your layout
         buttonFontSize = '22px'; // Smaller font size for more letters
     }
     // Further adjustments can be made based on different thresholds if needed
