@@ -1094,6 +1094,12 @@ function updateDisplay(message) {
     document.getElementById('hint').innerText = '';
 }
 
+function clearMessage() {
+    const messageElement = document.getElementById('message');
+    if (messageElement.innerHTML === 'Correct!') {
+        messageElement.innerHTML = '&nbsp;'; // Replace the "Correct!" message with a non-breaking space
+    }
+}
 
 function handleWordSelection(selectedWord) {
     const currentQuestion = gameData[currentDifficulty][currentLevel][currentQuestionIndex];
@@ -1103,13 +1109,13 @@ function handleWordSelection(selectedWord) {
         setTimeout(() => gameContainer.classList.remove('flash-green'), 500);
         score++;
         updateDisplay('Correct!');
-        setTimeout(() => updateDisplay(''), 5000);
+        // Schedule clearMessage to run after 5 seconds
+        setTimeout(clearMessage, 5000);
         currentQuestionIndex++;
                 
         if (currentQuestionIndex >= gameData[currentDifficulty][currentLevel].length) {
             updateDisplay('Round ' + currentLevel + ' complete! Moving to next level...');
-            finishLevel(); 
-            // Removed the next level start logic here as it's now handled in flashImage
+            finishLevel();
         } else {
             setTimeout(() => {
                 createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
