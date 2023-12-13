@@ -22,9 +22,29 @@ body {
     color: white; /* Ensuring text inside the container is also light */
 }
 
-#score-container, #hint-container {
+#hint-container {
+    min-height: 30px; /* Minimum height to always occupy space */
     margin: 10px 0;
+    overflow: hidden; /* Initially hide any overflow content */
 }
+
+#hint {
+    visibility: hidden; /* Initially hidden */
+    position: relative; /* Keep in the flow of the document */
+
+}
+
+
+
+#score-container {
+    position: absolute; /* Position the score container absolutely within the game container */
+    top: 10px; /* Position from the top of the game container */
+    left: 10px; /* Position from the left of the game container */
+    text-align: left;
+    margin: 0; /* Remove default margins */
+    font-size: 14px; /* Adjust font size */
+}
+
 
 #word-options {
     display: grid;
@@ -221,6 +241,24 @@ label {
 }
 
 #close-instructions:hover {
+    background-color: #777;
+    border-color: #999;
+}
+#play-audio {
+    padding: 5px 10px;
+    background-color: #444; /* Consistent with hint button */
+    color: white;
+    font-size: 18px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#play-audio:hover {
     background-color: #777;
     border-color: #999;
 }

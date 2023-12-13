@@ -1244,8 +1244,9 @@ function populateLevels(difficulty) {
 function displayHint() {
     const currentQuestion = gameData[currentDifficulty][currentLevel][currentQuestionIndex];
     if (currentQuestion && currentQuestion.hint) {
-        // Optionally add visual effects here
-        document.getElementById('hint').innerText = currentQuestion.hint;
+        const hintElement = document.getElementById('hint');
+        hintElement.innerText = currentQuestion.hint;
+        hintElement.style.visibility = 'visible'; // Make the hint visible
     } else {
         console.error('No hint available for the current question.');
     }
@@ -1254,6 +1255,7 @@ function displayHint() {
         'event_label': `Hint Used - Difficulty: ${currentDifficulty}, Level: ${currentLevel}`
     });
 }
+
 
 function finishLevel() {
     flashImage(); // Display the completion image
@@ -1398,3 +1400,23 @@ document.getElementById('instructions-button').addEventListener('click', functio
 document.getElementById('close-instructions').addEventListener('click', function() {
     document.getElementById('instructions-container').style.display = 'none';
 });
+
+function playWordAudios() {
+    const words = Array.from(document.querySelectorAll('#word-options button')).map(btn => btn.innerText);
+    let audioIndex = 0;
+
+    function playNextAudio() {
+        if (audioIndex < words.length) {
+            let audio = new Audio(`audio/audio_files/${words[audioIndex]}.mp3`);
+            audio.play();
+            audio.onended = () => {
+                audioIndex++;
+                playNextAudio();
+            };
+        }
+    }
+
+    playNextAudio();
+}
+
+document.getElementById('play-audio').addEventListener('click', playWordAudios);
