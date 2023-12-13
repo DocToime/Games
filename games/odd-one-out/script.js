@@ -1160,9 +1160,12 @@ function startLevel(difficulty, level) {
     updateDisplay('');
     document.getElementById('start-button').style.display = 'none';
     document.getElementById('instructions-button').style.display = 'none';
+
+    // Show the hint button etc when the game starts
     document.getElementById('hint-button').style.display = 'block';
-    // Show the hint button when the game starts
-    document.getElementById('hint-button').style.display = 'block';
+    document.getElementById('score-container').style.display = 'block';
+    document.getElementById('mistakes').style.display = 'block';
+    document.getElementById('play-audio').style.display = 'block';
 
     gtag('event', 'start_game', {
         'event_category': 'Game Actions',
@@ -1402,7 +1405,7 @@ document.getElementById('close-instructions').addEventListener('click', function
 });
 
 function playWordAudios() {
-    const words = Array.from(document.querySelectorAll('#word-options button')).map(btn => btn.innerText);
+    const words = Array.from(document.querySelectorAll('#word-options button')).map(btn => btn.innerText.toLowerCase()); // Convert text to lowercase
     let audioIndex = 0;
 
     function playNextAudio() {

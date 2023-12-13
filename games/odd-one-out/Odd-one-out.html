@@ -67,29 +67,31 @@
         </select>
        
     </div>
-
-    <div id="game-container">
+    <div class="game-wrapper">
         <h1>Odd One Out</h1>
-        <div id="score-container">
-            <p id="score">Score: 0</p>
-            <p id="mistakes">Mistakes: 0</p>
-        </div>
-        <div id="message-container">
-            <p id="message"></p>
-        </div>
-        <div id="hint-container">
-            <p id="hint"></p>
-        </div>
-        <button id="play-audio" title="Play Words">🔊</button>
+        <div id="game-container">
+            <div id="score-container">
+                <p id="score">Score: 0</p>
+                <p id="mistakes">Mistakes: 0</p>
+            </div>
+            <div id="message-container">
+                <p id="message"></p>
+            </div>
+            <div id="hint-container">
+                <p id="hint"></p>
+            </div>
+            <button id="play-audio" title="Play Words">🔊</button>
 
-        <div id="word-options">
-            <!-- Word buttons will be dynamically created here -->
+            <div id="word-options">
+                <!-- Word buttons will be dynamically created here -->
+            </div>
+            <button id="hint-button">Hint</button>
         </div>
         <div class="button-container">
             <button id="start-button">Start Game</button>
             <button id="instructions-button">Instructions</button>
         </div>
-        <button id="hint-button">Hint</button>
+        
     </div>
 <!-- Instructions Overlay -->
 <div id="instructions-container" style="display: none;">

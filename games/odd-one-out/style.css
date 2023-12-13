@@ -23,7 +23,7 @@ body {
 }
 
 #hint-container {
-    min-height: 30px; /* Minimum height to always occupy space */
+    min-height: 60px; /* Minimum height to always occupy space */
     margin: 10px 0;
     overflow: hidden; /* Initially hide any overflow content */
 }
@@ -31,9 +31,25 @@ body {
 #hint {
     visibility: hidden; /* Initially hidden */
     position: relative; /* Keep in the flow of the document */
+    height: 100%;
 
 }
 
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the child elements */
+    width: 80%; /* Match the width of the game container */
+    max-width: 600px; /* Match the max-width of the game container */
+    margin: auto; /* Center the wrapper on the page */
+}
+
+h1 {
+    text-align: center; /* Center the title */
+    color: white; /* Set the title color */
+    margin: 0 0 20px; /* Adjust margin for spacing */
+    font-size: 2em; /* Adjust font size as needed */
+}
 
 
 #score-container {
@@ -261,4 +277,8 @@ label {
 #play-audio:hover {
     background-color: #777;
     border-color: #999;
+}
+
+#score-container, #mistakes, #play-audio {
+    display: none;
 }
