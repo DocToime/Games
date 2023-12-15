@@ -1,0 +1,152 @@
+<!-- 
+    Copyright © 2023 Laurence Toime
+    All Rights Reserved.
+
+    This game and its source code are the exclusive property of Laurence Toime. 
+    Unauthorized copying, modification, distribution, or use of this game, 
+    either in part or in its entirety, without express written permission 
+    from Laurence Toime is strictly prohibited.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RP22FB00B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-8RP22FB00B');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Reader Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Andika&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Updated Open Graph meta tags for Speed Reader -->
+    <meta property="og:title" content="Speed Reader Game" />
+    <meta property="og:description" content="Enhance your reading speed and comprehension." />
+    <meta property="og:image" content="https://doctoime.github.io/Games/games/speed-reader/images/logo.png" />
+    <meta property="og:url" content="https://doctoime.github.io/Games/games/speed-reader/Speed-reader.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Speed Reader Game" />
+</head>
+<body>
+    <!-- Left-hand Side Controls (Level and Round) -->
+    <div id="left-controls" style="top: 10px; left: 10px;">
+        <div class="dropdowns-container">
+            <div id="difficulty-select-container">
+                <label for="difficulty-selector">Level:</label>
+                <select id="difficulty-selector">
+                    <!-- Difficulty options will be added dynamically -->
+                </select>
+            </div>
+            <div id="level-select-container">
+                <label for="level-select">Round:</label>
+                <select id="level-select">
+                    <!-- Round options will be added dynamically -->
+                </select>
+            </div>
+            <div id="mode-select-container">
+                <label for="mode-select">Mode:</label>
+                <select id="mode-select">
+                    <option value="easy">Easy</option>
+                    <option value="standard">Standard</option>
+                    <option value="dynamic">Dynamic</option>
+                </select>
+            </div>
+            
+        </div>
+        <button id="start-new-game" style="display: none; margin-top: 10px;">Start New Game</button>
+    </div>
+
+    <!-- Right-hand Side Controls (Font Selector) -->
+    <div id="right-controls" style="top: 10px; right: 10px;">
+        <label for="font-selector">Font:</label>
+        <select id="font-selector">
+            <option value="Andika">Andika</option>
+            <option value="Arial">Arial</option>
+            <option value="Cedarville Cursive">Cedarville Cursive</option>
+            <option value="VictoriaCursive">Victoria Cursive</option>
+            <option value="OpenDyslexic3-Regular">OpenDyslexic Regular</option>
+            <option value="OpenDyslexic3-Bold">OpenDyslexic Bold</option>
+        </select>
+    </div>
+    <!-- Wrapper for Title and Game Container -->
+    <div class="game-wrapper">
+        <h1>Speed Reader</h1>
+        <div id="game-container">
+            <!-- Added flash area for displaying content -->
+            <div id="flash-area" style="font-size: 24px; margin: 20px 0;"></div>
+
+            <div id="score-container">
+                <p id="score">Score: 0</p>
+                <p id="mistakes">Mistakes: 0</p>
+            </div>
+            <div id="message-container">
+                <p id="message"></p>
+            </div>
+            <div id="hint-container">
+                <p id="hint"></p>
+            </div>
+            <div id="word-options">
+                <!-- Word buttons will be dynamically created here -->
+            </div>
+            <div class="button-container">
+                <button id="start-button">Start Game</button>
+                <button id="instructions-button">Instructions</button>
+            </div>
+            <!-- Speed Selector inside Game Container -->
+            <div class="speed-selector-container">
+                <label for="speed-selector">Speed:</label>
+                <select id="speed-selector">
+                <!-- Speed options will be added dynamically -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated Instructions Overlay for Speed Reader -->
+    <div id="instructions-container" style="display: none;">
+        <div class="instructions-content">
+            <h2>Game Instructions</h2>
+
+            <h3>Objective:</h3>
+            <p>Read and comprehend words or sentences quickly.</p>
+
+            <h3>How to Play:</h3>
+            <ul>
+                <li>Choose a Level and Round, then click on "Start Game" to begin.</li>
+                <li>A word or sentence will flash on the screen. Pay close attention!</li>
+                <li>Answer a question related to the flashed content.</li>
+                <li>Each correct answer increases your score; mistakes are counted.</li>
+            </ul>
+
+            <h3>Features:</h3>
+            <ul>
+                <li><strong>Adjustable Difficulty:</strong> Choose different levels for varied challenges.</li>
+                <li><strong>Font Selection:</strong> Customize the font for a comfortable reading experience.</li>
+                <li><strong>Hint Button:</strong> Get hints if you're stuck on a question.</li>
+            </ul>
+
+            <h3>For Players:</h3>
+            <p>This game is designed to help improve your reading speed and comprehension in a fun and interactive way. Challenge yourself and see how quickly you can read and respond!</p>
+
+            <button id="close-instructions">Close Instructions</button>
+        </div>
+    </div>
+
+    <img id="flash-image" src="images/image1.webp" alt="Flashing Image" style="display: none; position: absolute; z-index: 1000;">
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 
+    Copyright © 2023 Laurence Toime
+    All Rights Reserved.
+
+
+-->

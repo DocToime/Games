@@ -1,0 +1,311 @@
+body {
+    font-family: "Andika", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black; /* Updated to black for a sleek look */
+    color: #ddd; /* Softer shade for text to reduce eye strain */
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+    /* Additional styling as needed */
+}
+
+#game-container {
+    padding-top: 40px; /* Increased top padding for score and mistakes */
+    padding-bottom: 60px; /* Consistent padding to accommodate word options */
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    background-color: #333; /* Darker background for the container */
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Subtle white shadow for depth */
+    min-height: 400px; /* Set a minimum height to prevent size changes */
+}
+
+
+#score-container, #hint-container {
+    position: absolute; /* Take them out of the normal flow */
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    margin: 0; /* Remove any default margins */
+    font-size: 14px; /* Adjust font size to make it less prominent */
+}
+
+#word-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid grey; /* Added border for definition */
+    border-radius: 5px;
+    background-color: #555; /* Darker button background */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+    background-color: #777; /* Lighter on hover for interactivity */
+    border-color: #999; /* Change border color on hover */
+}
+
+/* Left-hand Side Controls (Level and Round) */
+#left-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+}
+
+.dropdowns-container {
+    display: flex; /* Make the dropdowns align side by side */
+    gap: 10px; /* Space between the dropdowns */
+}
+
+/* Right-hand Side Controls (Font Selector) */
+#right-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: flex-start; /* Align items to the start for a clean look */
+    gap: 5px; /* Space between label and dropdown */
+}
+
+/* Style for individual dropdown containers */
+#font-selector, #difficulty-select-container, #level-select-container, #mode-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between label and dropdown */
+}
+
+/* Style for dropdowns */
+select {
+    padding: 5px;
+    background-color: lightgray; /* Light grey background */
+    border: 1px solid grey;
+    border-radius: 5px;
+    color: black; /* Ensuring dropdown text is visible */
+    font-size: 14px;
+    width: 100%; /* Ensure full width for consistency */
+}
+
+/* Style for labels */
+label {
+    font-size: 14px;
+    color: white;
+}
+
+/* Style for Instructions Button and Start Button */
+#instructions-button, #start-button {
+    padding: 10px 20px;
+    background-color: #555; /* Consistent with other buttons */
+    color: white;
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#instructions-button:hover, #start-button:hover {
+    background-color: #777;
+    border-color: #999;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Speed Selector Styling */
+.speed-selector-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start for a clean look */
+}
+
+.speed-selector-container label {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.speed-selector-container select {
+    padding: 5px;
+    background-color: lightgray;
+    border: 1px solid grey;
+    border-radius: 5px;
+    color: black;
+    font-size: 14px;
+}
+
+/* Button flash animations */
+.flash-green {
+    animation: flashGreen 0.5s;
+}
+
+.flash-red {
+    animation: flashRed 0.5s;
+}
+
+@keyframes flashGreen {
+    50% { background-color: rgba(0, 255, 0, 0.5); }
+}
+
+@keyframes flashRed {
+    50% { background-color: rgba(255, 0, 0, 0.5); }
+}
+
+@font-face {
+    font-family: 'VictoriaCursive';
+    src: url('fonts/VICCURSI.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic3-Regular';
+    src: url('fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic3-Bold';
+    src: url('fonts/OpenDyslexic3-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+#instructions-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: flex; /* Use flexbox to center the child vertically */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center; /* Center content horizontally */
+    z-index: 1001; /* Ensure it's above other content */
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding-top: 50px; /* Give some space at the top */
+}
+
+.instructions-content {
+    background-color: #333; /* Same as game container */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Same as game container */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 50px; /* Give some space at the bottom */
+}
+
+
+.instructions-content h2 {
+    margin-top: 0;
+    text-align: center; /* Center-align the title */
+}
+
+#close-instructions {
+    background-color: #555; /* Same as other buttons */
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Make the button a block element */
+    margin-left: auto; /* Align button to the right */
+    margin-right: auto; /* Align button to the right */
+}
+
+#close-instructions:hover {
+    background-color: #777;
+    border-color: #999;
+}
+
+#flash-area {
+    font-size: 24px;
+    height: 50px; /* Set a fixed height */
+    line-height: 50px; /* Centers text vertically */
+    margin: 20px 0;
+    margin-top: 80px;
+    padding: 10px;
+    background-color: #555; /* Dark background to highlight the flashing content */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Slight shadow for depth */
+    transition: background-color 0.5s; /* Smooth transition for flash effect */
+}
+
+/* Adjust the word-options area for proper spacing */
+#word-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px; /* Adjusted margin for better spacing */
+}
+
+/* Additional styles for animations and transitions */
+.flash-show {
+/*    animation: flashShow 1s; /* Animation for displaying the content */
+}
+
+@keyframes flashShow {
+    0% { background-color: #555; }
+    50% { background-color: #777; }
+    100% { background-color: #555; }
+}
+
+.hidden-but-occupy-space {
+    visibility: hidden;
+    position: static; /* Ensures it doesn't change the layout */
+    height: auto; /* Adjusts height automatically */
+    width: auto; /* Adjusts width automatically */
+}
+
+/* Resize the Start New Game button */
+#start-new-game {
+    padding: 5px 10px; /* Smaller padding */
+    font-size: 14px; /* Smaller font size */
+    width: auto; /* Auto width to fit content */
+    margin-top: 5px; /* Adjust margin as needed */
+}
