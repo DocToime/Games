@@ -575,7 +575,7 @@ let currentImageIndex = 0;
 function flashImage() {
     setTimeout(() => {
         const gameContainer = document.getElementById('game-container');
-        const titleElement = document.querySelector('#game-container h1');
+        const titleElement = document.querySelector('.game-wrapper > h1');
 
         gameContainer.style.display = 'none';
         titleElement.style.color = 'black';
