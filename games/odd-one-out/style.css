@@ -291,3 +291,11 @@ label {
 #score-container, #mistakes, #play-audio {
     display: none;
 }
+
+#message-container {
+    height: 50px; /* Reserve space for the message */
+    margin-top: 50px; /* Adjust margins for spacing */
+    display: flex;
+    justify-content: center; /* Center the message horizontally */
+    align-items: center; /* Center the message vertically */
+}

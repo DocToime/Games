@@ -1042,7 +1042,11 @@ function createWordButtons(words) {
     const wordOptionsContainer = document.getElementById('word-options');
     wordOptionsContainer.innerHTML = '';
     hintUsed = false;
+    const playAudioButton = document.getElementById('play-audio');
+    playAudioButton.style.display = 'none';
+
     shuffleArray(words);
+    
 
     // Define a set of vibrant colors
     const colors = [
@@ -1082,6 +1086,9 @@ function createWordButtons(words) {
 
         button.addEventListener('click', () => handleWordSelection(word));
         wordOptionsContainer.appendChild(button);
+        setTimeout(() => {
+            playAudioButton.style.display = 'block';
+        }, 20000); // 20000 milliseconds = 20 seconds
     });
 }
 
@@ -1165,7 +1172,6 @@ function startLevel(difficulty, level) {
     document.getElementById('hint-button').style.display = 'block';
     document.getElementById('score-container').style.display = 'block';
     document.getElementById('mistakes').style.display = 'block';
-    document.getElementById('play-audio').style.display = 'block';
 
     gtag('event', 'start_game', {
         'event_category': 'Game Actions',
