@@ -294,7 +294,7 @@ label {
 
 #message-container {
     height: 50px; /* Reserve space for the message */
-    margin-top: 50px; /* Adjust margins for spacing */
+    margin-top: 65px; /* Adjust margins for spacing */
     display: flex;
     justify-content: center; /* Center the message horizontally */
     align-items: center; /* Center the message vertically */
