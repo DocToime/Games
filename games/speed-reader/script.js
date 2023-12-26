@@ -405,13 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populateLevels("Characters"); 
     populateSpeeds();
 
-    // Event listener for the mode selector
-    const modeSelect = document.getElementById('mode-select');
-    modeSelect.value = currentMode; // Set the default value to currentMode ('standard')
-    modeSelect.addEventListener('change', function() {
-        currentMode = this.value; // Update the current mode based on selection
-    });
-
+ 
     // Set up event listeners for difficulty and level dropdowns
     const difficultySelect = document.getElementById('difficulty-selector');
     const levelSelect = document.getElementById('level-select');
@@ -709,7 +703,20 @@ function startSpeedTest() {
     currentLevel = 'Reception'; // Using the 'Reception' word list for the test
     currentQuestionIndex = 0;
     score = 0;
-    mistakes = 0;
+    mistakes = 0;function startSpeedTest() {
+        currentMode = 'dynamic'; // Set mode to dynamic for speed adjustments
+        currentDifficulty = 'Words'; // Using the 'Words' difficulty
+        currentLevel = 'Reception'; // Using the 'Reception' word list for the test
+        currentQuestionIndex = 0;
+        score = 0;
+        mistakes = 0;
+        consecutiveCorrect = 0;
+        consecutiveIncorrect = 0;
+    
+        // No need to modify the gameData structure, as we're using existing categories
+    
+        startLevel(currentDifficulty, currentLevel);
+    }
     consecutiveCorrect = 0;
     consecutiveIncorrect = 0;
 
