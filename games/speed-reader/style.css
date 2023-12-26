@@ -44,7 +44,7 @@ h1 {
 
 #score-container, #hint-container {
     position: absolute; /* Take them out of the normal flow */
-    top: 10px; /* Adjust as needed */
+    top: -80px; /* Adjust as needed */
     left: 10px; /* Adjust as needed */
     margin: 0; /* Remove any default margins */
     font-size: 14px; /* Adjust font size to make it less prominent */
@@ -150,7 +150,7 @@ label {
 /* Speed Selector Styling */
 .speed-selector-container {
     position: absolute;
-    top: 20px;
+    top: -80px;
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -266,8 +266,8 @@ label {
     font-size: 24px;
     height: 50px; /* Set a fixed height */
     line-height: 50px; /* Centers text vertically */
-    margin: 20px 0;
-    margin-top: 80px;
+    margin: 20px;
+    margin-top: 100px;
     padding: 10px;
     background-color: #555; /* Dark background to highlight the flashing content */
     color: white;
@@ -281,7 +281,7 @@ label {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    margin-top: 10px; /* Adjusted margin for better spacing */
+    margin-top: 20px; /* Adjusted margin for better spacing */
 }
 
 /* Additional styles for animations and transitions */
@@ -308,4 +308,8 @@ label {
     font-size: 14px; /* Smaller font size */
     width: auto; /* Auto width to fit content */
     margin-top: 5px; /* Adjust margin as needed */
+}
+
+#message-container {
+    margin-top: 20px; /* Adjust margin-top as needed */
 }
