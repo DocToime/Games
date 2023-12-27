@@ -4,6 +4,7 @@ let currentLevel = "1"; // Default level
 let currentQuestionIndex = 0;
 let score = 0;
 let mistakes = 0;
+let currentQuestions = []; // Global variable to store current set of questions
 const gameContainer = document.getElementById('game-container');
 
 
@@ -33,7 +34,7 @@ let hebrewTwoLetterWords = [
     "זו", "זה", "אם", "חי"
 ];
 let Reception = ['age', 'appear', 'artist', 'Autumn', 'beak', 'bloom', 'bumpy', 'burst', 'buzz', 'care', 'check', 'chilly', 'chore', 'comfort', 'community', 'country', 'covered', 'dangle', 'decision', 'delicious', 'dentist', 'dew', 'disappear', 'drawer', 'dusty', 'edge', 'farmer', 'fear', 'firefly', 'fix', 'flipper', 'fluffy', 'follow', 'gallop', 'gentle', 'giggle', 'glance', 'glossy', 'glow', 'goal', 'grasp', 'gust', 'half', 'healthy', 'herd', 'hoof', 'include', 'invitation', 'knight', 'laundry', 'lazy', 'leaf', 'leak', 'library', 'market', 'melt', 'miserable', 'month', 'muddy', 'museum', 'note', 'pace', 'pair', 'patient', 'peaceful', 'peck', 'pilot', 'plan', 'pointy', 'polite', 'pond', 'president', 'protect', 'proud', 'race', 'reach', 'relax', 'rotten', 'sail', 'scene', 'scrub', 'shade', 'shaky', 'ship', 'shore', 'silky', 'sink', 'slide', 'slip', 'sniff', 'soapy', 'sparkle', 'spotted', 'spring', 'stare', 'summer', 'supplies', 'tangled', 'tent', 'tomorrow', 'trade', 'trunk', 'warm', 'wave', 'week', 'wiggle', 'winter', 'wish', 'yesterday', 'young'];
-let Year1 = ['ache', 'adjust', 'affordable', 'alarm', 'alone', 'apologise', 'appetite', 'applause', 'artistic', 'atmosphere', 'attach', 'bashful', 'basket', 'batch', 'behave', 'belong', 'bend', 'blink', 'blush', 'bolt', 'bolts', 'borrow', 'bundle', 'cabin', 'caterpillar', 'caution', 'cave', 'celebrate', 'champion', 'chat', 'cheat', 'chimney', 'compass', 'complain', 'conductor', 'construct', 'costume', 'cosy', 'cranky', 'crash', 'creak', 'croak', 'crowded', 'cue', 'curved', 'daily', 'dainty', 'dart', 'decorate', 'delighted', 'denied', 'deserve', 'divide', 'dodge', 'drenched', 'drowsy', 'enormous', 'equal', 'exclaim', 'exhausted', 'expensive', 'fancy', 'fasten', 'filthy', 'flat', 'flee', 'fog', 'footprint', 'forest', 'freezing', 'gather', 'giant', 'glad', 'gleaming', 'glum', 'grab', 'grateful', 'grin', 'grip', 'groan', 'hatch', 'heap', 'hide', 'hobby', 'honest', 'howl', 'illustrator', 'injury', 'jealous', 'knob', 'lively', 'loosen', 'mask', 'misty', 'modern', 'mountain', 'narrow', 'obey', 'pain', 'passenger', 'pattern', 'pest', 'polish', 'pretend', 'polish', 'promise', 'rapid', 'remove', 'repeat', 'rescue', 'restart', 'return', 'ripe', 'rise', 'roar', 'rough', 'rusty', 'scold', 'scratch', 'seed', 'selfish', 'serious', 'shell', 'shovel (verb)', 'shriek', 'sibling', 'silent', 'simple', 'slippery', 'sly', 'sneaky', 'sob', 'spiral', 'splendid', 'sprinkle', 'squirm', 'startle', 'steep', 'stormy', 'striped', 'surround', 'switch', 'terrified', 'thick', 'thunder', 'ticket', 'timid', 'transportation', 'travel', 'trust', 'upset', 'weed', 'whimper', 'whirl', 'wicked', 'yank'];
+let Year1 = ['ache', 'adjust', 'affordable', 'alarm', 'alone', 'apologise', 'appetite', 'applause', 'artistic', 'atmosphere', 'attach', 'bashful', 'basket', 'batch', 'behave', 'belong', 'bend', 'blink', 'blush', 'bolt', 'bolts', 'borrow', 'bundle', 'cabin', 'caterpillar', 'caution', 'cave', 'celebrate', 'champion', 'chat', 'cheat', 'chimney', 'compass', 'complain', 'conductor', 'construct', 'costume', 'cosy', 'cranky', 'crash', 'creak', 'croak', 'crowded', 'cue', 'curved', 'daily', 'dainty', 'dart', 'decorate', 'delighted', 'denied', 'deserve', 'divide', 'dodge', 'drenched', 'drowsy', 'enormous', 'equal', 'exclaim', 'exhausted', 'expensive', 'fancy', 'fasten', 'filthy', 'flat', 'flee', 'fog', 'footprint', 'forest', 'freezing', 'gather', 'giant', 'glad', 'gleaming', 'glum', 'grab', 'grateful', 'grin', 'grip', 'groan', 'hatch', 'heap', 'hide', 'hobby', 'honest', 'howl', 'illustrator', 'injury', 'jealous', 'knob', 'lively', 'loosen', 'mask', 'misty', 'modern', 'mountain', 'narrow', 'obey', 'pain', 'passenger', 'pattern', 'pest', 'polish', 'pretend', 'polish', 'promise', 'rapid', 'remove', 'repeat', 'rescue', 'restart', 'return', 'ripe', 'rise', 'roar', 'rough', 'rusty', 'scold', 'scratch', 'seed', 'selfish', 'serious', 'shell', 'shovel', 'shriek', 'sibling', 'silent', 'simple', 'slippery', 'sly', 'sneaky', 'sob', 'spiral', 'splendid', 'sprinkle', 'squirm', 'startle', 'steep', 'stormy', 'striped', 'surround', 'switch', 'terrified', 'thick', 'thunder', 'ticket', 'timid', 'transportation', 'travel', 'trust', 'upset', 'weed', 'whimper', 'whirl', 'wicked', 'yank'];
 let Year2 = ['accident', 'agree', 'arrive', 'astronomy', 'atlas', 'attention', 'award', 'aware', 'balance', 'banner', 'bare', 'beach', 'besides', 'blast', 'board', 'bounce', 'brain', 'branch', 'brave', 'bright', 'cage', 'calf', 'calm', 'career', 'centre', 'cheer', 'chew', 'claw', 'clear', 'cliff', 'club', 'collect', 'connect', 'corner', 'couple', 'crowd', 'curious', 'damp', 'dangerous', 'dash', 'dawn', 'deep', 'demolish', 'design', 'discard', 'doubt', 'dozen', 'enemy', 'evening', 'exactly', 'excess', 'factory', 'fair', 'famous', 'feast', 'field', 'finally', 'flap', 'float', 'flood', 'fold', 'fresh', 'frighten', 'fuel', 'gap', 'gaze', 'gift', 'gravity', 'greedy', 'harm', 'herd', 'idea', 'insect', 'instrument', 'invent', 'island', 'leader', 'leap', 'lizard', 'local', 'lonely', 'luxury', 'march', 'mention', 'motor', 'nervous', 'net', 'nibble', 'notice', 'ocean', 'orbit', 'pack', 'pale', 'parade', 'past', 'peak', 'planet', 'present', 'proof', 'reflect', 'rumour', 'safe', 'scholar', 'seal', 'search', 'settle', 'share', 'shelter', 'shiver', 'shy', 'skill', 'slight', 'smooth', 'soil', 'stack', 'steady', 'strand', 'stream', 'support', 'team', 'telescope', 'tiny', 'tower', 'travel', 'tremble', 'universe', 'village', 'warn', 'weak', 'wealthy', 'whisper', 'wise', 'wonder', 'worry', 'yard', 'zigzag'];
 let Year3 = ['ability', 'absorb', 'accuse', 'act', 'active', 'actual', 'adopt', 'advantage', 'advice', 'ambition', 'ancient', 'approach', 'arrange', 'arctic', 'attitude', 'attract', 'average', 'avoid', 'bold', 'border', 'brief', 'brilliant', 'capture', 'certain', 'chill', 'clever', 'climate', 'cling', 'coast', 'confess', 'consider', 'contain', 'continent', 'convince', 'coward', 'crew', 'crumple', 'custom', 'decay', 'defend', 'delicate', 'diagram', 'digest', 'disease', 'distant', 'doze', 'drift', 'elegant', 'enable', 'examine', 'explore', 'fan', 'fatal', 'fierce', 'flutter', 'fortunate', 'frail', 'gasp', 'glide', 'globe', 'grace', 'gradual', 'grasp', 'habit', 'harsh', 'imitate', 'individual', 'intelligent', 'intend', 'journey', 'launch', 'limit', 'locate', 'loyal', 'magnificent', 'marsh', 'method', 'misery', 'moisture', 'mural', 'mystify', 'nation', 'nectar', 'nursery', 'observe', 'opponent', 'ordeal', 'origin', 'outcome', 'passage', 'pastime', 'pause', 'perform', 'plunge', 'predator', 'predict', 'prevent', 'primary', 'privilege', 'process', 'rare', 'rate', 'recall', 'rely', 'remark', 'resident', 'respect', 'responsible', 'reverse', 'revive', 'risk', 'scatter', 'schedule', 'sensitive', 'signal', 'solution', 'spoil', 'starve', 'steer', 'struggled', 'suitable', 'survey', 'swift', 'symbol', 'talent', 'theory', 'thrill', 'treasure', 'triumph', 'value', 'vision', 'volunteer', 'wander', 'wisdom', 'wit', 'woe'];
 let Year4 = ['accurate', 'address', 'afford', 'alert', 'analyse', 'ancestor', 'annual', 'apparent', 'appropriate', 'arena', 'arrest', 'ascend', 'assist', 'attempt', 'attentive', 'attractive', 'awkward', 'baggage', 'basic', 'benefit', 'blend', 'blossom', 'burrow', 'calculate', 'capable', 'captivity', 'carefree', 'century', 'chamber', 'circular', 'coax', 'column', 'communicate', 'competition', 'complete', 'concentrate', 'concern', 'conclude', 'confuse', 'congratulate', 'considerable', 'content', 'contribute', 'crafty', 'create', 'demonstrate', 'descend', 'desire', 'destructive', 'develop', 'disaster', 'disclose', 'distract', 'distress', 'dusk', 'eager', 'ease', 'entertain', 'envy', 'essential', 'extraordinary', 'flexible', 'focus', 'fragile', 'frantic', 'frequent', 'frontier', 'furious', 'generosity', 'hail', 'hardship', 'heroic', 'host', 'humble', 'impact', 'increase', 'indicate', 'inspire', 'instant', 'invisible', 'jagged', 'lack', 'limb', 'limp', 'manufacture', 'master', 'mature', 'meadow', 'mistrust', 'mock', 'modest', 'noble', 'orchard', 'outstanding', 'peculiar', 'peer', 'permit', 'plead', 'plentiful', 'pointless', 'portion', 'practice', 'precious', 'prefer', 'prepare', 'proceed', 'queasy', 'recent', 'recognise', 'reduce', 'release', 'represent', 'request', 'resist', 'response', 'reveal', 'routine', 'severe', 'shabby', 'shallow', 'sole', 'source', 'sturdy', 'surface', 'survive', 'terror', 'threat', 'tidy', 'tour', 'tradition', 'tragic', 'typical', 'vacant', 'valiant', 'variety', 'vast', 'venture', 'weary'];
@@ -325,8 +326,10 @@ function handleWordSelection(selectedOption, correctAnswer) {
     const currentQuestion = gameData[currentDifficulty][currentLevel][currentQuestionIndex];
 
     if (selectedOption === correctAnswer) {
+        // Correct answer handling
         consecutiveCorrect++;
         consecutiveIncorrect = 0;
+        currentQuestion.incorrectAttempts = 0; // Reset incorrect attempts for this question
         gameContainer.classList.add('flash-green');
         setTimeout(() => gameContainer.classList.remove('flash-green'), 500);
         score++;
@@ -340,9 +343,11 @@ function handleWordSelection(selectedOption, correctAnswer) {
         } else {
             setTimeout(() => {
                 displayContentForLimitedDuration(gameData[currentDifficulty][currentLevel][currentQuestionIndex]);
-            }, 500);
+            }, 750);
         }
     } else {
+        // Incorrect answer handling
+        currentQuestion.incorrectAttempts = (currentQuestion.incorrectAttempts || 0) + 1; // Increment or initialize incorrectAttempts
         consecutiveIncorrect++;
         consecutiveCorrect = 0;
         gameContainer.classList.add('flash-red');
@@ -355,12 +360,23 @@ function handleWordSelection(selectedOption, correctAnswer) {
             'event_category': 'Game Actions',
             'event_label': `Mistake Made - Difficulty: ${currentDifficulty}, Level: ${currentLevel}, Question: ${currentQuestionIndex}`
         });
+
+        if (currentQuestion.incorrectAttempts >= 2) {
+            // Repeat the word by flashing it up again and showing the same question options
+            setTimeout(() => {
+                displayContentForLimitedDuration(currentQuestion); // Flash the word again
+                createWordButtons(currentQuestion); // Rearrange and show the same question options
+            }, 750);
+            updateDisplay('Please try again...');
+            return; // Prevent moving to the next question
+        }
     }
 
     if (currentMode === 'dynamic') {
         adjustSpeed();
     }
 }
+
 
 
 function startLevel(difficulty, level) {
@@ -395,10 +411,6 @@ function startLevel(difficulty, level) {
     document.getElementById('start-button').style.display = 'none';
     document.getElementById('instructions-button').style.display = 'none';
 }
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     populateDifficulties();
@@ -620,30 +632,46 @@ function flashImage() {
 
         currentImageIndex = (currentImageIndex + 1) % completionImages.length;
 
-        // Event Listener to remove the image container on click and progress to the next level/difficulty
         imageContainer.addEventListener('click', () => {
             document.body.removeChild(imageContainer);
             gameContainer.style.display = '';
             titleElement.style.color = '';
 
-            let nextLevel = parseInt(currentLevel) + 1;
-            let difficulties = Object.keys(gameData);
-            let currentDifficultyIndex = difficulties.indexOf(currentDifficulty);
+            let levelKeys = Object.keys(gameData[currentDifficulty]);
+            let currentLevelIndex = levelKeys.indexOf(currentLevel);
+            let nextLevelIndex = currentLevelIndex + 1;
 
-            if (nextLevel > Object.keys(gameData[currentDifficulty]).length) {
-                if (currentDifficultyIndex < difficulties.length - 1) {
-                    let nextDifficulty = difficulties[currentDifficultyIndex + 1];
-                    startLevel(nextDifficulty, "1"); // Start first level of the next difficulty
+            if (nextLevelIndex < levelKeys.length) {
+                startLevel(currentDifficulty, levelKeys[nextLevelIndex]);
+            } else {
+                let difficulties = Object.keys(gameData);
+                let currentDifficultyIndex = difficulties.indexOf(currentDifficulty);
+                let nextDifficultyIndex = currentDifficultyIndex + 1;
+                
+                if (nextDifficultyIndex < difficulties.length) {
+                    startLevel(difficulties[nextDifficultyIndex], Object.keys(gameData[difficulties[nextDifficultyIndex]])[0]);
                 } else {
                     updateDisplay('Congratulations! You have completed all levels and difficulties.');
                 }
-            } else {
-                startLevel(currentDifficulty, String(nextLevel));
             }
+            
+            // Update the Difficulty and Level drop-downs
+            updateSelectors();
         });
     }, 2000);
 }
 
+function updateSelectors() {
+    const difficultySelect = document.getElementById('difficulty-selector');
+    const levelSelect = document.getElementById('level-select');
+
+    // Update the Difficulty drop-down
+    difficultySelect.value = currentDifficulty;
+
+    // Update the Level drop-down
+    populateLevels(currentDifficulty); // This assumes populateLevels function updates levelSelect options
+    levelSelect.value = currentLevel;
+}
 
 function populateDifficulties() {
     const difficultySelect = document.getElementById('difficulty-selector');
@@ -703,24 +731,17 @@ function startSpeedTest() {
     currentLevel = 'Reception'; // Using the 'Reception' word list for the test
     currentQuestionIndex = 0;
     score = 0;
-    mistakes = 0;function startSpeedTest() {
-        currentMode = 'dynamic'; // Set mode to dynamic for speed adjustments
-        currentDifficulty = 'Words'; // Using the 'Words' difficulty
-        currentLevel = 'Reception'; // Using the 'Reception' word list for the test
-        currentQuestionIndex = 0;
-        score = 0;
-        mistakes = 0;
-        consecutiveCorrect = 0;
-        consecutiveIncorrect = 0;
-    
-        // No need to modify the gameData structure, as we're using existing categories
-    
-        startLevel(currentDifficulty, currentLevel);
-    }
+    mistakes = 0;
     consecutiveCorrect = 0;
     consecutiveIncorrect = 0;
 
-    // No need to modify the gameData structure, as we're using existing categories
+    // Set the speed to 100ms
+    currentSpeed = displaySpeeds["100ms"];
+
+    // Update the speed selector display to reflect this change
+    const speedSelector = document.getElementById('speed-selector');
+    speedSelector.value = "100ms";
 
     startLevel(currentDifficulty, currentLevel);
 }
+  
