@@ -1,17 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Game Collection</title>
+    <style>
+        body {
+            font-family: "Andika", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #ddd;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin: 0 0 20px;
+            font-size: 2em;
+        }
+        p {
+            color: white;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: #20c997; /* Mint Green for links */
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        a:hover {
+            color: #fd7e14; /* Orange on hover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Game Collection</h1>
-    <p>Feedback very welcome.</p>
-    <ul>
-        <li><a href="games/odd-one-out/Odd-one-out.html">Odd One Out</a></li>
-        <!-- Future games can be added here in a similar manner -->
-    </ul>
+    <div class="game-collection-wrapper">
+        <h1>Welcome to My Game Collection</h1>
+        <p>Feedback very welcome.</p>
+        <ul>
+            <li><a href="games/odd-one-out/Odd-one-out.html">Odd One Out</a></li>
+            <li><a href="games/speed-reader/speed-reader.html">Speed Reader</a></li>
+            <li><a href="games/spelling-bee/spelling-bee.html">Spelling Bee</a></li>
+
+            <!-- Future games can be added here in a similar manner -->
+        </ul>
+    </div>
 </body>
 </html>
