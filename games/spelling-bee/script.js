@@ -1,19 +1,5 @@
 
 let gameData = {
-    "Beginner": {
-        "1": [
-            {"words": ["dog"], "correct": "dog", "hint": "The ___ chases the cat."},
-            {"words": ["tug"], "correct": "tug", "hint": "We ___ on the rope."},
-            {"words": ["fog"], "correct": "fog", "hint": "The ___ makes it hard to see."},
-            {"words": ["bag"], "correct": "bag", "hint": "I carry my books in a ___."},
-            {"words": ["fun"], "correct": "fun", "hint": "Playing games is a lot of ___."},
-            {"words": ["mat"], "correct": "mat", "hint": "Please wipe your feet on the ___."},
-            {"words": ["man"], "correct": "man", "hint": "The ___ is walking his dog."},
-            {"words": ["nun"], "correct": "nun", "hint": "The ___ lives at the church."},
-            {"words": ["hot"], "correct": "hot", "hint": "The soup is too ___ to eat."},
-            {"words": ["bog"], "correct": "bog", "hint": "The ___ is a wet, muddy area."}
-        ]},
-
     "Reception": {
         "1": [
             {"words": ["go"], "correct": "go", "hint": "It's your turn to ___."},
@@ -89,62 +75,6 @@ let gameData = {
             {"words": ["people"], "correct": "people", "hint": "Many ___ like to swim."},
             {"words": ["looked"], "correct": "looked", "hint": "He ___ out the window."},
             {"words": ["abacus"], "correct": "abacus", "hint": "___ is the name of a school."}],
-        "Days": [
-            {"words": ["Monday"], "correct": "Monday", "hint": "___ is named after the Moon."},
-            {"words": ["Tuesday"], "correct": "Tuesday", "hint": "___ is named for Tyr, the Norse god of war."},
-            {"words": ["Wednesday"], "correct": "Wednesday", "hint": "___ is named after Odin, the Norse god of wisdom and war."},
-            {"words": ["Thursday"], "correct": "Thursday", "hint": "___ is named for Thor, the Norse god of thunder."},
-            {"words": ["Friday"], "correct": "Friday", "hint": "___ is named after Frigg, the Norse goddess of love and fertility."},
-            {"words": ["Saturday"], "correct": "Saturday", "hint": "___ is named for Saturn, the Roman god of agriculture and wealth."},
-            {"words": ["Sunday"], "correct": "Sunday", "hint": "___ is named after the Sun."}],
-        "Months": [
-            {"words": ["January"], "correct": "January", "hint": "___ is named after Janus, the Roman god of doors and gates."},
-            {"words": ["February"], "correct": "February", "hint": "___ is named after Februa, an early Roman festival and cleansing ritual."},
-            {"words": ["March"], "correct": "March", "hint": "___ is named for Mars, the Roman god of war."},
-            {"words": ["April"], "correct": "April", "hint": "___ may be derived from the Latin word 'aperire', meaning 'to open', possibly referring to the opening or blossoming of flowers and trees."},
-            {"words": ["May"], "correct": "May", "hint": "___ is named after Maia, an earth goddess of growing plants."},
-            {"words": ["June"], "correct": "June", "hint": "___ is named after Juno, the Roman goddess of marriage and the well-being of women."},
-            {"words": ["July"], "correct": "July", "hint": "___ was named in honour of Julius Caesar."},
-            {"words": ["August"], "correct": "August", "hint": "___ was named in honour of Augustus Caesar."},
-            {"words": ["September"], "correct": "September", "hint": "___, meaning 'seventh', was originally the seventh month in the ancient Roman calendar."},
-            {"words": ["October"], "correct": "October", "hint": "___, meaning 'eighth', was originally the eighth month in the ancient Roman calendar."},
-            {"words": ["November"], "correct": "November", "hint": "___, meaning 'ninth', was originally the ninth month in the ancient Roman calendar."},
-            {"words": ["December"], "correct": "December", "hint": "___, meaning 'tenth', was originally the tenth month in the ancient Roman calendar."}],
-        "Numbers 0-10": [
-            {"words": ["zero"], "correct": "zero", "hint": "___ is the number that represents no quantity or size."},
-            {"words": ["one"], "correct": "one", "hint": "___ is the first natural number."},
-            {"words": ["two"], "correct": "two", "hint": "___ is the only even prime number."},
-            {"words": ["three"], "correct": "three", "hint": "___ is often used to represent balance, as in a tripod."},
-            {"words": ["four"], "correct": "four", "hint": "___ is the number of sides in a square."},
-            {"words": ["five"], "correct": "five", "hint": "A starfish typically has ___ arms."},
-            {"words": ["six"], "correct": "six", "hint": "A standard die has ___ faces."},
-            {"words": ["seven"], "correct": "seven", "hint": "There are ___ days in a week."},
-            {"words": ["eight"], "correct": "eight", "hint": "An octopus has ___ tentacles."},
-            {"words": ["nine"], "correct": "nine", "hint": "A cat is said to have ___ lives."},
-            {"words": ["ten"], "correct": "ten", "hint": "There are ___ fingers on two hands."}],
-        "Numbers 11-20": [
-            {"words": ["eleven"], "correct": "eleven", "hint": "___ is the first number after ten."},
-            {"words": ["twelve"], "correct": "twelve", "hint": "A dozen is made up of ___ items."},
-            {"words": ["thirteen"], "correct": "thirteen", "hint": "___ is considered an unlucky number in some cultures."},
-            {"words": ["fourteen"], "correct": "fourteen", "hint": "Valentine's Day falls on February ___."},
-            {"words": ["fifteen"], "correct": "fifteen", "hint": "In tennis, the first point won is ___."},
-            {"words": ["sixteen"], "correct": "sixteen", "hint": "A sweet ___ party is a coming-of-age celebration."},
-            {"words": ["seventeen"], "correct": "seventeen", "hint": "___ is the age at which you can learn to drive in the UK."},
-            {"words": ["eighteen"], "correct": "eighteen", "hint": "When you turn ___, you are considered an adult in many countries."},
-            {"words": ["nineteen"], "correct": "nineteen", "hint": "___ is the last of the 'teen' numbers."},
-            {"words": ["twenty"], "correct": "twenty", "hint": "A score is ___ years."}],
-        "colours": [
-            {"words": ["red"], "correct": "red", "hint": "Apples can be ___. It's a very bright colour."},
-            {"words": ["blue"], "correct": "blue", "hint": "The sky is often ___. It's a cool colour."},
-            {"words": ["yellow"], "correct": "yellow", "hint": "Lemons are ___. It's a very bright colour."},
-            {"words": ["green"], "correct": "green", "hint": "Grass is ___. Leaves are often this colour too."},
-            {"words": ["orange"], "correct": "orange", "hint": "Carrots are ___. It's like a mix of red and yellow."},
-            {"words": ["purple"], "correct": "purple", "hint": "Grapes can be ___. It's a dark colour."},
-            {"words": ["pink"], "correct": "pink", "hint": "Bubblegum is often ___. It's a light red."},
-            {"words": ["brown"], "correct": "brown", "hint": "Chocolate is ___. Many trees are this colour."},
-            {"words": ["black"], "correct": "black", "hint": "The night is ___. Ravens are this colour too."},
-            {"words": ["white"], "correct": "white", "hint": "Snow is ___. It's the brightest colour."}]
-                              
         },
     "Year1": {
         "1": [
@@ -278,8 +208,64 @@ let gameData = {
             {"words": ["says"], "correct": "says", "hint": "The teacher ___ it's time for class."},
             {"words": ["ask"], "correct": "ask", "hint": "Can you ___ your mum for help?"},
             {"words": ["full"], "correct": "full", "hint": "My glass is ___ of water."},
-            {"words": ["friend"], "correct": "friend", "hint": "I like playing with my ___ at school."}]
-
+            {"words": ["friend"], "correct": "friend", "hint": "I like playing with my ___ at school."}],
+        "Days": [
+            {"words": ["Monday"], "correct": "Monday", "hint": "___ is named after the Moon."},
+            {"words": ["Tuesday"], "correct": "Tuesday", "hint": "___ is named for Tyr, the Norse god of war."},
+            {"words": ["Wednesday"], "correct": "Wednesday", "hint": "___ is named after Odin, the Norse god of wisdom and war."},
+            {"words": ["Thursday"], "correct": "Thursday", "hint": "___ is named for Thor, the Norse god of thunder."},
+            {"words": ["Friday"], "correct": "Friday", "hint": "___ is named after Frigg, the Norse goddess of love and fertility."},
+            {"words": ["Saturday"], "correct": "Saturday", "hint": "___ is named for Saturn, the Roman god of agriculture and wealth."},
+            {"words": ["Sunday"], "correct": "Sunday", "hint": "___ is named after the Sun."}],
+        "Months": [
+            {"words": ["January"], "correct": "January", "hint": "___ is named after Janus, the Roman god of doors and gates."},
+            {"words": ["February"], "correct": "February", "hint": "___ is named after Februa, an early Roman festival and cleansing ritual."},
+            {"words": ["March"], "correct": "March", "hint": "___ is named for Mars, the Roman god of war."},
+            {"words": ["April"], "correct": "April", "hint": "___ may be derived from the Latin word 'aperire', meaning 'to open', possibly referring to the opening or blossoming of flowers and trees."},
+            {"words": ["May"], "correct": "May", "hint": "___ is named after Maia, an earth goddess of growing plants."},
+            {"words": ["June"], "correct": "June", "hint": "___ is named after Juno, the Roman goddess of marriage and the well-being of women."},
+            {"words": ["July"], "correct": "July", "hint": "___ was named in honour of Julius Caesar."},
+            {"words": ["August"], "correct": "August", "hint": "___ was named in honour of Augustus Caesar."},
+            {"words": ["September"], "correct": "September", "hint": "___, meaning 'seventh', was originally the seventh month in the ancient Roman calendar."},
+            {"words": ["October"], "correct": "October", "hint": "___, meaning 'eighth', was originally the eighth month in the ancient Roman calendar."},
+            {"words": ["November"], "correct": "November", "hint": "___, meaning 'ninth', was originally the ninth month in the ancient Roman calendar."},
+            {"words": ["December"], "correct": "December", "hint": "___, meaning 'tenth', was originally the tenth month in the ancient Roman calendar."}],
+        "Numbers 0-10": [
+            {"words": ["zero"], "correct": "zero", "hint": "___ is the number that represents no quantity or size."},
+            {"words": ["one"], "correct": "one", "hint": "___ is the first natural number."},
+            {"words": ["two"], "correct": "two", "hint": "___ is the only even prime number."},
+            {"words": ["three"], "correct": "three", "hint": "___ is often used to represent balance, as in a tripod."},
+            {"words": ["four"], "correct": "four", "hint": "___ is the number of sides in a square."},
+            {"words": ["five"], "correct": "five", "hint": "A starfish typically has ___ arms."},
+            {"words": ["six"], "correct": "six", "hint": "A standard die has ___ faces."},
+            {"words": ["seven"], "correct": "seven", "hint": "There are ___ days in a week."},
+            {"words": ["eight"], "correct": "eight", "hint": "An octopus has ___ tentacles."},
+            {"words": ["nine"], "correct": "nine", "hint": "A cat is said to have ___ lives."},
+            {"words": ["ten"], "correct": "ten", "hint": "There are ___ fingers on two hands."}],
+        "Numbers 11-20": [
+            {"words": ["eleven"], "correct": "eleven", "hint": "___ is the first number after ten."},
+            {"words": ["twelve"], "correct": "twelve", "hint": "A dozen is made up of ___ items."},
+            {"words": ["thirteen"], "correct": "thirteen", "hint": "___ is considered an unlucky number in some cultures."},
+            {"words": ["fourteen"], "correct": "fourteen", "hint": "Valentine's Day falls on February ___."},
+            {"words": ["fifteen"], "correct": "fifteen", "hint": "In tennis, the first point won is ___."},
+            {"words": ["sixteen"], "correct": "sixteen", "hint": "A sweet ___ party is a coming-of-age celebration."},
+            {"words": ["seventeen"], "correct": "seventeen", "hint": "___ is the age at which you can learn to drive in the UK."},
+            {"words": ["eighteen"], "correct": "eighteen", "hint": "When you turn ___, you are considered an adult in many countries."},
+            {"words": ["nineteen"], "correct": "nineteen", "hint": "___ is the last of the 'teen' numbers."},
+            {"words": ["twenty"], "correct": "twenty", "hint": "A score is ___ years."}],
+        "Colours": [
+            {"words": ["red"], "correct": "red", "hint": "Apples can be ___. It's a very bright colour."},
+            {"words": ["blue"], "correct": "blue", "hint": "The sky is often ___. It's a cool colour."},
+            {"words": ["yellow"], "correct": "yellow", "hint": "Lemons are ___. It's a very bright colour."},
+            {"words": ["green"], "correct": "green", "hint": "Grass is ___. Leaves are often this colour too."},
+            {"words": ["orange"], "correct": "orange", "hint": "Carrots are ___. It's like a mix of red and yellow."},
+            {"words": ["purple"], "correct": "purple", "hint": "Grapes can be ___. It's a dark colour."},
+            {"words": ["pink"], "correct": "pink", "hint": "Bubblegum is often ___. It's a light red."},
+            {"words": ["brown"], "correct": "brown", "hint": "Chocolate is ___. Many trees are this colour."},
+            {"words": ["black"], "correct": "black", "hint": "The night is ___. Ravens are this colour too."},
+            {"words": ["white"], "correct": "white", "hint": "Snow is ___. It's the brightest colour."}]
+                                
+    
             // ... Additional levels can be added in the same structure ...
         },
     "Year2": {
@@ -445,7 +431,7 @@ const introAudios = [
     "now spell"
 ];
 
-let currentDifficulty = "Beginner"; // Default difficulty
+let currentDifficulty = "Reception"; // Default difficulty
 let currentLevel = "1"; // Default level
 let currentQuestionIndex = 0;
 let score = 0;
@@ -493,6 +479,13 @@ function updateDisplay(message) {
 
     // Ensure the hint remains visible
     displayHint();
+
+    // Hide message after 5 seconds if it's a "Correct!" or "Oops" message
+    if (message === "Correct!" || message.startsWith("Oops")) {
+        setTimeout(() => {
+            messageElement.innerHTML = '&nbsp;';
+        }, 5000);
+    }
 }
 
 function clearMessage() {
@@ -789,25 +782,28 @@ function flashImage() {
             gameContainer.style.display = '';
             titleElement.style.color = '';
 
-            let nextLevel = parseInt(currentLevel) + 1;
-            let difficulties = Object.keys(gameData);
-            let currentDifficultyIndex = difficulties.indexOf(currentDifficulty);
-
-            if (nextLevel > Object.keys(gameData[currentDifficulty]).length) {
+            // Updated logic to handle both numeric and descriptive level names
+            let nextLevelIndex = Object.keys(gameData[currentDifficulty]).indexOf(currentLevel) + 1;
+            let nextLevelKeys = Object.keys(gameData[currentDifficulty]);
+            if (nextLevelIndex < nextLevelKeys.length) {
+                let nextLevel = nextLevelKeys[nextLevelIndex];
+                startLevel(currentDifficulty, nextLevel);
+                updateDropdowns(currentDifficulty, nextLevel);
+            } else {
+                let difficulties = Object.keys(gameData);
+                let currentDifficultyIndex = difficulties.indexOf(currentDifficulty);
                 if (currentDifficultyIndex < difficulties.length - 1) {
                     let nextDifficulty = difficulties[currentDifficultyIndex + 1];
-                    startLevel(nextDifficulty, "1"); // Start first level of the next difficulty
-                    updateDropdowns(nextDifficulty, "1");
+                    startLevel(nextDifficulty, Object.keys(gameData[nextDifficulty])[0]);
+                    updateDropdowns(nextDifficulty, Object.keys(gameData[nextDifficulty])[0]);
                 } else {
                     updateDisplay('Congratulations! You have completed all levels and difficulties.');
                 }
-            } else {
-                startLevel(currentDifficulty, String(nextLevel));
-                updateDropdowns(currentDifficulty, String(nextLevel));
             }
         });
     }, 2000);
 }
+
 
 function updateDropdowns(newDifficulty, newLevel) {
     const difficultySelect = document.getElementById('difficulty-selector');
