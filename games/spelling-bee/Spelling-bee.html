@@ -65,8 +65,14 @@
             <option value="OpenDyslexic3-Regular">OpenDyslexic Regular</option>
             <option value="OpenDyslexic3-Bold">OpenDyslexic Bold</option>
         </select>
-       
+        <label for="mode-select">Mode:</label>
+        <select id="mode-select">
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard" selected>Hard</option>
+        </select>
     </div>
+    
     <div class="game-wrapper">
         <h1>Spelling Bee</h1>
         <div id="game-container">
@@ -110,7 +116,7 @@
             <li>Listen to the spoken word and use the keyboard to spell it correctly.</li>
             <li>Each correct answer increases your score; mistakes are counted.</li>
             <li>At the end of each Round, a fun picture will pop up as a reward.</li>
-            <li>Use the "Hint" button to see the word used in a sentence.</li>
+            <li>Use the "Hint" button to briefly see the correct spelling.</li>
             <li>Replay the word audio as needed by clicking the audio button.</li>
         </ul>
 
@@ -122,14 +128,12 @@
                     <!-- Add more difficulty levels as necessary -->
                 </ul>
             </li>
+            <li><strong>Mode Selection:</strong> Choose how many 'incorrect' letters the player can choose from.</li>
             <li><strong>Font Selection:</strong> Choose from various fonts to assist with reading and familiarity.</li>
-            <li><strong>Hint Button:</strong> Reveals a sentence with a blank where the word fits, to provide context and aid in spelling.</li>
+            <li><strong>Hint Button:</strong> Reveals the word briefly.</li>
             <li><strong>Audio Playback:</strong> Listen to the word again by clicking the audio button.</li>
         </ul>
 
-        <h3>For Parents:</h3>
-        <p>Encourage children to listen carefully and attempt spelling before using the hint. This helps develop listening and spelling skills.</p>
-        
         <button id="close-instructions">Close Instructions</button>
     </div>
 </div>

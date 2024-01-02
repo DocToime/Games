@@ -273,10 +273,167 @@ let gameData = {
             {"words": ["called"], "correct": "called", "hint": "The dog is ___ Max."},
             {"words": ["another"], "correct": "another", "hint": "Can I have ___ biscuit, please?"},
             {"words": ["because"], "correct": "because", "hint": "I'm happy ___ it's sunny."},
-            {"words": ["brother"], "correct": "brother", "hint": "My ___ is older than me."}]
-    
+            {"words": ["brother"], "correct": "brother", "hint": "My ___ is older than me."},
+            {"words": ["today"], "correct": "today", "hint": "We are going to the park ___."},
+            {"words": ["says"], "correct": "says", "hint": "The teacher ___ it's time for class."},
+            {"words": ["ask"], "correct": "ask", "hint": "Can you ___ your mum for help?"},
+            {"words": ["full"], "correct": "full", "hint": "My glass is ___ of water."},
+            {"words": ["friend"], "correct": "friend", "hint": "I like playing with my ___ at school."}]
+
             // ... Additional levels can be added in the same structure ...
-        }
+        },
+    "Year2": {
+        "1": [
+            {"words": ["floor"], "correct": "floor", "hint": "Please pick up the toys from the ___."},
+            {"words": ["poor"], "correct": "poor", "hint": "The ___ cat was hungry."},
+            {"words": ["find"], "correct": "find", "hint": "Can you ___ your shoes?"},
+            {"words": ["kind"], "correct": "kind", "hint": "It is nice to be ___ to others."},
+            {"words": ["mind"], "correct": "mind", "hint": "Please ___ your manners."},
+            {"words": ["behind"], "correct": "behind", "hint": "The dog hid ___ the sofa."},
+            {"words": ["child"], "correct": "child", "hint": "Every ___ likes to play."},
+            {"words": ["children"], "correct": "children", "hint": "The ___ are playing in the park."},
+            {"words": ["wild"], "correct": "wild", "hint": "Lions are ___ animals."},
+            {"words": ["climb"], "correct": "climb", "hint": "Monkeys like to ___ trees."}],
+        "2": [
+            {"words": ["most"], "correct": "most", "hint": "She ate the ___ cake."},
+            {"words": ["only"], "correct": "only", "hint": "He was the ___ one who knew the answer."},
+            {"words": ["both"], "correct": "both", "hint": "___ of the cats are sleeping."},
+            {"words": ["cold"], "correct": "cold", "hint": "In winter, it is very ___ outside."},
+            {"words": ["gold"], "correct": "gold", "hint": "Pirates search for ___ treasure."},
+            {"words": ["hold"], "correct": "hold", "hint": "Can you ___ my hand?"},
+            {"words": ["told"], "correct": "told", "hint": "She ___ a funny joke."},
+            {"words": ["every"], "correct": "every", "hint": "___ morning, we have breakfast."},
+            {"words": ["everybody"], "correct": "everybody", "hint": "___ in the class was happy."},
+            {"words": ["even"], "correct": "even", "hint": "___ numbers end with 0, 2, 4, 6, or 8."}],
+        "3": [
+            {"words": ["great"], "correct": "great", "hint": "She did a ___ job on her project."},
+            {"words": ["break"], "correct": "break", "hint": "Please don't ___ the toy."},
+            {"words": ["steak"], "correct": "steak", "hint": "For dinner, they had ___ and vegetables."},
+            {"words": ["pretty"], "correct": "pretty", "hint": "The flowers are very ___. It's a word for 'nice looking'."},
+            {"words": ["beautiful"], "correct": "beautiful", "hint": "The sunset is ___. It's a word for 'very pretty'."},
+            {"words": ["fast"], "correct": "fast", "hint": "Cheetahs can run very ___. It's the opposite of slow."},
+            {"words": ["past"], "correct": "past", "hint": "She walked ___ the shops. It's a word for 'by' or 'beyond'."},
+            {"words": ["father"], "correct": "father", "hint": "My ___ is very tall. It's another word for 'dad'."},
+            {"words": ["class"], "correct": "class", "hint": "We learn new things in ___. It's a room at school."},
+            {"words": ["grass"], "correct": "grass", "hint": "The ___ is green in the park. It's a type of plant."}],
+        "4": [
+            {"words": ["pass"], "correct": "pass", "hint": "Could you ___ me the salt? It's a word for 'give'."},
+            {"words": ["plant"], "correct": "plant", "hint": "A ___ needs water to grow. It's a living thing in the ground."},
+            {"words": ["path"], "correct": "path", "hint": "We walked down the ___ in the woods. It's a trail or way."},
+            {"words": ["bath"], "correct": "bath", "hint": "I take a ___ before bed. It's a tub for washing."},
+            {"words": ["hour"], "correct": "hour", "hint": "There are 60 minutes in an ___. It's a unit of time."},
+            {"words": ["move"], "correct": "move", "hint": "Please ___ your chair closer. It means 'change position'."},
+            {"words": ["prove"], "correct": "prove", "hint": "Can you ___ you did your homework? It means 'show it is true'."},
+            {"words": ["improve"], "correct": "improve", "hint": "She wants to ___ her reading. It means 'make better'."},
+            {"words": ["sure"], "correct": "sure", "hint": "Are you ___ you locked the door? It means 'certain'."},
+            {"words": ["sugar"], "correct": "sugar", "hint": "Please add some ___ to my tea. It's sweet and white."}],
+        "5": [
+            {"words": ["eye"], "correct": "eye", "hint": "We see with our ___. It's a part of the face."},
+            {"words": ["whole"], "correct": "whole", "hint": "He ate the ___ cake. It means 'all of it'."},
+            {"words": ["any"], "correct": "any", "hint": "Do you have ___ questions? It means 'even one'."},
+            {"words": ["clothes"], "correct": "clothes", "hint": "She puts on her ___ in the morning. They are what we wear."},
+            {"words": ["busy"], "correct": "busy", "hint": "The shop is very ___. It means 'a lot to do'."},
+            {"words": ["money"], "correct": "money", "hint": "We use ___ to buy things. It's coins and notes."},
+            {"words": ["parents"], "correct": "parents", "hint": "My ___ help me with homework. They are mum and dad."}]
+        },
+    "Year3_4": {
+        "1": [
+            {"words": ["accident"], "correct": "accident", "hint": "She fell by ___ while running. It means 'something unplanned'."},
+            {"words": ["centre"], "correct": "centre", "hint": "The table is in the ___ of the room. It means 'middle'."},
+            {"words": ["accidentally"], "correct": "accidentally", "hint": "He ___ broke the glass. It means 'by mistake'."},
+            {"words": ["century"], "correct": "century", "hint": "A ___ is 100 years. It's a long time period."},
+            {"words": ["experience"], "correct": "experience", "hint": "Traveling gives you new ___. It's what you know or feel."},
+            {"words": ["important"], "correct": "important", "hint": "Homework is ___. It means 'having great value'."},
+            {"words": ["ordinary"], "correct": "ordinary", "hint": "It was an ___ day. Nothing special happened."},
+            {"words": ["reign"], "correct": "reign", "hint": "The queen's ___ was long. It means 'to rule'."},
+            {"words": ["experiment"], "correct": "experiment", "hint": "We did a science ___. It's a test to learn something new."},
+            {"words": ["interest"], "correct": "interest", "hint": "He has an ___ in football. It's what you like to do or know about."}],
+        "2": [
+            {"words": ["particular"], "correct": "particular", "hint": "She is very ___ about her food. It means 'specific' or 'special'."},
+            {"words": ["remember"], "correct": "remember", "hint": "Don't forget to ___ your bag. It means 'keep in mind'."},
+            {"words": ["actual"], "correct": "actual", "hint": "The ___ story was different. It means 'real' or 'true'."},
+            {"words": ["certain"], "correct": "certain", "hint": "I am ___ it will rain. It means 'sure'."},
+            {"words": ["extreme"], "correct": "extreme", "hint": "Skydiving is an ___ sport. It means 'very great' or 'serious'."},
+            {"words": ["island"], "correct": "island", "hint": "Hawaii is an ___. It's land surrounded by water."},
+            {"words": ["peculiar"], "correct": "peculiar", "hint": "The cat's behavior was ___. It means 'strange'."},
+            {"words": ["sentence"], "correct": "sentence", "hint": "A ___ ends with a full stop. It's a group of words."},
+            {"words": ["actually"], "correct": "actually", "hint": "I ___ like broccoli. It means 'in fact'."},
+            {"words": ["circle"], "correct": "circle", "hint": "Draw a ___. It's a round shape."}],
+        "3": [
+            {"words": ["famous"], "correct": "famous", "hint": "Many people know about ___ people. It means 'well-known'."},
+            {"words": ["knowledge"], "correct": "knowledge", "hint": "Reading books increases your ___. It's what you know."},
+            {"words": ["perhaps"], "correct": "perhaps", "hint": "___ we will go out later. It means 'maybe'."},
+            {"words": ["separate"], "correct": "separate", "hint": "Keep the colours ___. It means 'not together'."},
+            {"words": ["address"], "correct": "address", "hint": "Write your ___ on the envelope. It's where you live."},
+            {"words": ["complete"], "correct": "complete", "hint": "She needs to ___ her homework. It means 'finish'."},
+            {"words": ["favourite"], "correct": "favourite", "hint": "Ice cream is my ___. It's what you like the most."},
+            {"words": ["learn"], "correct": "learn", "hint": "We ___ new things at school. It means 'gain knowledge'."},
+            {"words": ["popular"], "correct": "popular", "hint": "This game is very ___. Many people like it."},
+            {"words": ["special"], "correct": "special", "hint": "Her birthday is a ___ day. It means 'different from normal'."}],
+        "4": [
+            {"words": ["although"], "correct": "although", "hint": "___ it's raining, we will go out. It means 'despite this'."},
+            {"words": ["consider"], "correct": "consider", "hint": "Please ___ all options. It means 'think about'."},
+            {"words": ["length"], "correct": "length", "hint": "Measure the ___ of the table. It's how long something is."},
+            {"words": ["position"], "correct": "position", "hint": "What is your ___ in the race? It's where you are."},
+            {"words": ["straight"], "correct": "straight", "hint": "Draw a ___ line. It's not curved or bent."},
+            {"words": ["answer"], "correct": "answer", "hint": "Please give me the ___ to the question. It's the solution."},
+            {"words": ["continue"], "correct": "continue", "hint": "The show must ___. It means 'go on'."},
+            {"words": ["forwards"], "correct": "forwards", "hint": "He walked ___. It's the opposite of backwards."},
+            {"words": ["library"], "correct": "library", "hint": "You can borrow books from the ___. It's a place with many books."},
+            {"words": ["possess"], "correct": "possess", "hint": "She does not ___ a car. It means 'have'."}],
+        "5": [
+            {"words": ["strange"], "correct": "strange", "hint": "The noise was ___. It means 'unusual'."},
+            {"words": ["appear"], "correct": "appear", "hint": "The sun will ___ in the morning. It means 'come into view'."},
+            {"words": ["decide"], "correct": "decide", "hint": "You must ___ which one to choose. It means 'make a choice'."},
+            {"words": ["fruit"], "correct": "fruit", "hint": "Apples are a type of ___. It's something healthy to eat."},
+            {"words": ["material"], "correct": "material", "hint": "Cotton is a type of ___. It's what things are made from."},
+            {"words": ["possession"], "correct": "possession", "hint": "His bike is his prized ___. It means 'something owned'."},
+            {"words": ["strength"], "correct": "strength", "hint": "Lifting weights builds ___. It means 'power' or 'force'."},
+            {"words": ["arrive"], "correct": "arrive", "hint": "The train will ___ soon. It means 'come to a place'."},
+            {"words": ["describe"], "correct": "describe", "hint": "Can you ___ your pet? It means 'tell about'."},
+            {"words": ["grammar"], "correct": "grammar", "hint": "We learn about ___ in English class. It's about language rules."}],
+        "6": [
+            {"words": ["medicine"], "correct": "medicine", "hint": "She takes ___ when she's ill. It's used to treat sickness."},
+            {"words": ["possible"], "correct": "possible", "hint": "Is it ___ to finish this today? It means 'can be done'."},
+            {"words": ["suppose"], "correct": "suppose", "hint": "I ___ you're right. It means 'think' or 'assume'."},
+            {"words": ["sugar"], "correct": "sugar", "hint": "Tea tastes sweet with ___. It's a type of sweetener."},
+            {"words": ["therefore"], "correct": "therefore", "hint": "It rained, ___ we stayed inside. It means 'as a result'."},
+            {"words": ["breathe"], "correct": "breathe", "hint": "We ___ in air to live. It's taking air into your lungs."},
+            {"words": ["early"], "correct": "early", "hint": "She wakes up ___ in the morning. It's before the usual time."},
+            {"words": ["heard"], "correct": "heard", "hint": "I ___ a loud noise. It means 'listened to'."},
+            {"words": ["naughty"], "correct": "naughty", "hint": "The child was being ___. It means 'badly behaved'."},
+            {"words": ["promise"], "correct": "promise", "hint": "I ___ to help you. It's a vow or commitment."}],
+        "7": [
+            {"words": ["build"], "correct": "build", "hint": "They will ___ a new house. It means 'construct'."},
+            {"words": ["earth"], "correct": "earth", "hint": "Plants grow in the ___. It's the ground or soil."},
+            {"words": ["heart"], "correct": "heart", "hint": "The ___ pumps blood. It's an organ in your body."},
+            {"words": ["notice"], "correct": "notice", "hint": "Did you ___ the new sign? It means 'observe'."},
+            {"words": ["purpose"], "correct": "purpose", "hint": "The ___ of school is to learn. It means 'reason'."},
+            {"words": ["through"], "correct": "through", "hint": "The path goes ___ the forest. It means 'from end to end'."},
+            {"words": ["busy"], "correct": "busy", "hint": "She's ___ with homework. It means 'occupied'."},
+            {"words": ["height"], "correct": "height", "hint": "What is your ___? It means 'how tall'."},
+            {"words": ["occasion"], "correct": "occasion", "hint": "A birthday is a special ___. It's an event."},
+            {"words": ["quarter"], "correct": "quarter", "hint": "A ___ is one-fourth of something."}],
+        "8": [
+            {"words": ["various"], "correct": "various", "hint": "There are ___ types of fruit. It means 'different kinds'."},
+            {"words": ["weight"], "correct": "weight", "hint": "The ___ of the bag is heavy. It's how heavy something is."},
+            {"words": ["calendar"], "correct": "calendar", "hint": "Mark the date on the ___. It's used to show dates."},
+            {"words": ["enough"], "correct": "enough", "hint": "We have ___ food for everyone. It means 'sufficient'."},
+            {"words": ["imagine"], "correct": "imagine", "hint": "Can you ___ a world of peace? It means 'visualize'."},
+            {"words": ["often"], "correct": "often", "hint": "She ___ goes for a walk. It means 'frequently'."},
+            {"words": ["recent"], "correct": "recent", "hint": "The ___ news is important. It means 'not long ago'."},
+            {"words": ["woman"], "correct": "woman", "hint": "A grown-up girl is a ___. It's an adult female person."},
+            {"words": ["caught"], "correct": "caught", "hint": "The cat ___ the mouse. It means 'captured'."},
+            {"words": ["exercise"], "correct": "exercise", "hint": "Running is good ___. It's physical activity."}],
+        "9": [
+            {"words": ["increase"], "correct": "increase", "hint": "Prices tend to ___ every year. It means 'go up'."},
+            {"words": ["opposite"], "correct": "opposite", "hint": "Hot is the ___ of cold. It means 'completely different'."},
+            {"words": ["regular"], "correct": "regular", "hint": "He visits the park on a ___ basis. It means 'usual'."},
+            {"words": ["women"], "correct": "women", "hint": "Many ___ work in the office. It's plural of 'woman'."},
+            ],
+        
+        // ... Continue for the remaining words ...
+    }
         
     };
 
@@ -294,6 +451,9 @@ let currentQuestionIndex = 0;
 let score = 0;
 let mistakes = 0;
 let hintUsed = false;
+const modeSelect = document.getElementById('mode-select');
+let currentMode = modeSelect.value; // Initialize with the current value of modeSelect
+
 const gameContainer = document.getElementById('game-container');
 
 
@@ -321,26 +481,27 @@ function createWordButtons(words) {
     playWordAudio();
     displayHint();
 
-    setTimeout(() => {
-        document.getElementById('play-audio').style.display = 'block';
-    }, 0); // 20000 milliseconds = 20 seconds
+    document.getElementById('play-audio').style.display = 'block';
 }
 
 
 function updateDisplay(message) {
     const messageElement = document.getElementById('message');
-    messageElement.innerHTML = message || '&nbsp;'; // Replace an empty message with a non-breaking space
+    messageElement.innerHTML = message || '&nbsp;';
     document.getElementById('score').innerText = 'Score: ' + score;
     document.getElementById('mistakes').innerText = 'Mistakes: ' + mistakes;
-    document.getElementById('hint').innerText = '';
+
+    // Ensure the hint remains visible
+    displayHint();
 }
 
 function clearMessage() {
     const messageElement = document.getElementById('message');
-    if (messageElement.innerHTML === 'Correct!') {
-        messageElement.innerHTML = '&nbsp;'; // Replace the "Correct!" message with a non-breaking space
+    if (messageElement.innerHTML.startsWith('Oops')) {
+        messageElement.innerHTML = '&nbsp;';
     }
 }
+
 
 function handleWordSelection(selectedWord) {
     const currentQuestion = gameData[currentDifficulty][currentLevel][currentQuestionIndex];
@@ -350,16 +511,19 @@ function handleWordSelection(selectedWord) {
         setTimeout(() => gameContainer.classList.remove('flash-green'), 500);
         score++;
         updateDisplay('Correct!');
-        // Schedule clearMessage to run after 5 seconds
         setTimeout(clearMessage, 5000);
         currentQuestionIndex++;
-                
+
         if (currentQuestionIndex >= gameData[currentDifficulty][currentLevel].length) {
             updateDisplay('Round ' + currentLevel + ' complete! Moving to next level...');
             finishLevel();
         } else {
             setTimeout(() => {
                 createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
+                updateSpelledWordPlaceholder();
+            currentMode = modeSelect.value; // Update the current mode
+
+            createKeyboard(currentMode); // Recreate the keyboard for the new question
             }, 500);
         }
     } else {
@@ -374,8 +538,6 @@ function handleWordSelection(selectedWord) {
         });
     }
 }
-
-
 
 function startLevel(difficulty, level) {
     currentDifficulty = difficulty;
@@ -396,9 +558,10 @@ function startLevel(difficulty, level) {
         return;
     }
 
+    clearKeyboard();
     createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
     setupGameContainer(); // Set up the game container for the spelling display
-    createKeyboard(); // Create the keyboard for spelling input
+    createKeyboard(currentMode); // Create the keyboard for spelling input
     updateDisplay('');
     document.getElementById('start-button').style.display = 'none';
     document.getElementById('instructions-button').style.display = 'none';
@@ -418,9 +581,19 @@ function startLevel(difficulty, level) {
     });
 }
 
+function clearKeyboard() {
+    // Remove existing keyboard if it exists
+    const existingKeyboard = document.getElementById('keyboard-container');
+    if (existingKeyboard) {
+        gameContainer.removeChild(existingKeyboard);
+    }
 
-
-
+    // Clear the spelled word placeholder
+    const spelledWordElement = document.getElementById('spelled-word');
+    if (spelledWordElement) {
+        spelledWordElement.textContent = '';
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Populate difficulties and levels
@@ -472,6 +645,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const modeSelect = document.getElementById('mode-select');
+    modeSelect.addEventListener('change', () => {
+        const selectedMode = modeSelect.value;
+        createKeyboard(selectedMode); // Update the keyboard based on the selected mode
+    });
 });
 
 
@@ -492,11 +670,18 @@ function populateLevels(difficulty) {
 }
 
 function displayHint() {
-    const hint = gameData[currentDifficulty][currentLevel][currentQuestionIndex].hint;
-    const hintElement = document.getElementById('hint');
-    hintElement.innerText = hint;
-    hintElement.style.visibility = 'visible';
+    // Check if the current question exists
+    if (gameData[currentDifficulty] && gameData[currentDifficulty][currentLevel] && gameData[currentDifficulty][currentLevel][currentQuestionIndex]) {
+        const hint = gameData[currentDifficulty][currentLevel][currentQuestionIndex].hint;
+        const hintElement = document.getElementById('hint');
+        hintElement.innerText = hint;
+        hintElement.style.visibility = 'visible';
+    } else {
+        // If no current question, clear the hint
+        document.getElementById('hint').innerText = '';
+    }
 }
+
 
 
 function finishLevel() {
@@ -612,14 +797,23 @@ function flashImage() {
                 if (currentDifficultyIndex < difficulties.length - 1) {
                     let nextDifficulty = difficulties[currentDifficultyIndex + 1];
                     startLevel(nextDifficulty, "1"); // Start first level of the next difficulty
+                    updateDropdowns(nextDifficulty, "1");
                 } else {
                     updateDisplay('Congratulations! You have completed all levels and difficulties.');
                 }
             } else {
                 startLevel(currentDifficulty, String(nextLevel));
+                updateDropdowns(currentDifficulty, String(nextLevel));
             }
         });
     }, 2000);
+}
+
+function updateDropdowns(newDifficulty, newLevel) {
+    const difficultySelect = document.getElementById('difficulty-selector');
+    const levelSelect = document.getElementById('level-select');
+    difficultySelect.value = newDifficulty;
+    levelSelect.value = newLevel;
 }
 
 
@@ -673,43 +867,39 @@ function playWordAudio(playIntro = true) {
 
 document.getElementById('play-audio').addEventListener('click', () => playWordAudio(false));
 
-function createKeyboard() {
+function createKeyboard(mode) {
+    clearKeyboard();
+
     const keyboardLayout = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+    const currentWord = gameData[currentDifficulty][currentLevel][currentQuestionIndex].correct.toLowerCase();
+    let lettersToInclude = getLettersForMode(currentWord, mode);
+
     const keyboardContainer = document.createElement('div');
     keyboardContainer.id = 'keyboard-container';
     gameContainer.appendChild(keyboardContainer);
 
-    // Define a set of vibrant colors
     const colors = ['#007bff', '#17a2b8', '#fd7e14', '#6f42c1', '#20c997', '#FF7F50', '#FF00FF'];
-
-    // Select a random color for all keyboard buttons
     const randomColorIndex = Math.floor(Math.random() * colors.length);
     const buttonColor = colors[randomColorIndex];
 
     keyboardLayout.forEach(row => {
         const rowDiv = document.createElement('div');
         rowDiv.className = 'keyboard-row';
-
         row.split('').forEach(letter => {
             const keyButton = document.createElement('button');
             keyButton.className = 'keyboard-key';
             keyButton.textContent = letter;
-
-            // Apply the same random color to each keyboard button
             keyButton.style.backgroundColor = buttonColor;
             keyButton.style.color = 'white';
-
-            keyButton.addEventListener('click', () => {
-                handleKeyPress(keyButton, letter);
-            });
-
+            if (!lettersToInclude.includes(letter) && mode !== 'Hard') {
+                keyButton.style.visibility = 'hidden'; // Hide irrelevant keys in Easy and Medium modes
+            }
+            keyButton.addEventListener('click', () => handleKeyPress(keyButton, letter));
             rowDiv.appendChild(keyButton);
         });
-
         keyboardContainer.appendChild(rowDiv);
     });
 }
-
 
 function setupGameContainer() {
     const spelledWordElement = document.createElement('div');
@@ -739,19 +929,19 @@ function handleKeyPress(button, letter) {
         button.classList.add('flash-green');
         setTimeout(() => button.classList.remove('flash-green'), 500);
 
+        // Clear the "Oops..." message if present
+        clearMessage();
+
         if (currentSpelling.toLowerCase() === currentQuestion.correct.toLowerCase()) {
             handleCorrectSpelling();
         }
     } else {
-        // Flash the message container red and increment mistakes
-        const messageContainer = document.getElementById('message');
-        messageContainer.classList.add('flash-red');
-        setTimeout(() => messageContainer.classList.remove('flash-red'), 500);
+        button.classList.add('flash-red');
+        setTimeout(() => button.classList.remove('flash-red'), 500);
         mistakes++;
         updateDisplay('Oops, that’s not right. Try again.');
     }
 }
-
 
 function checkSpelling() {
     const spelledWord = document.getElementById('spelled-word').textContent.replace(/\s+/g, '');
@@ -777,12 +967,16 @@ function handleCorrectSpelling() {
         finishLevel();
     } else {
         setTimeout(() => {
+            // Create new word buttons for the next question
             createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
-            // Reset the spelled word display for the next question
+            // Update the spelled word placeholder for the next question
             updateSpelledWordPlaceholder();
+            // Recreate the keyboard for the new word
+            createKeyboard(currentMode);
         }, 500);
     }
 }
+
 
 function flashWord(word) {
     const hintElement = document.getElementById('hint');
@@ -792,3 +986,38 @@ function flashWord(word) {
         hintElement.innerText = originalHint;
     }, 2000); // Flash the word for 2 seconds
 }
+
+function getLettersForMode(word, mode) {
+    let lettersToInclude = getUniqueLetters(word);
+    if (mode === 'Medium') {
+        addRandomLetters(lettersToInclude, 5);
+    } else if (mode === 'Hard') {
+        lettersToInclude = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    }
+    return lettersToInclude;
+}
+
+function getUniqueLetters(word) {
+    return Array.from(new Set(word.split('')));
+}
+
+function addRandomLetters(lettersArray, count) {
+    const allLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    while (count > 0) {
+        let randomLetter = allLetters[Math.floor(Math.random() * allLetters.length)];
+        if (!lettersArray.includes(randomLetter)) {
+            lettersArray.push(randomLetter);
+            count--;
+        }
+    }
+}
+
+document.getElementById('mode-select').addEventListener('change', () => {
+    currentMode = modeSelect.value;
+    createKeyboard(currentMode); // Update the keyboard based on the selected mode
+
+    // Refresh the current question to apply the mode change immediately
+    createWordButtons(gameData[currentDifficulty][currentLevel][currentQuestionIndex].words);
+    updateSpelledWordPlaceholder(); // Refresh the spelled word placeholder
+});
+
