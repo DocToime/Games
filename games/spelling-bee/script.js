@@ -846,7 +846,7 @@ function playWordAudio(playIntro = true) {
 
         introAudio.onended = () => {
             // Play the word audio after the intro audio ends
-            const currentWord = gameData[currentDifficulty][currentLevel][currentQuestionIndex].correct;
+            const currentWord = gameData[currentDifficulty][currentLevel][currentQuestionIndex].correct.toLowerCase();
             const wordAudioPath = `audio/audio_files/${currentWord}.mp3`;
             const wordAudio = new Audio(wordAudioPath);
             wordAudio.play();
@@ -858,7 +858,7 @@ function playWordAudio(playIntro = true) {
         });
     } else {
         // Play only the word audio
-        const currentWord = gameData[currentDifficulty][currentLevel][currentQuestionIndex].correct;
+        const currentWord = gameData[currentDifficulty][currentLevel][currentQuestionIndex].correct.toLowerCase();
         const wordAudioPath = `audio/audio_files/${currentWord}.mp3`;
         const wordAudio = new Audio(wordAudioPath);
         wordAudio.play();
