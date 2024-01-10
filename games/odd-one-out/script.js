@@ -883,14 +883,14 @@ let gameData = {
         {"words": ["Flower", "Flour", "Bread", "Cake"], "correct": "Flower", "hint": "This flower is pretty in the vase, unlike flour used for baking."}
     ],
     "3": [
-        {"words": ["Wait", "Weight", "Heavy", "Light"], "correct": "Weight", "hint": "You might wait for your turn, but weight is how heavy something is."},
+        {"words": ["Wait", "Weight", "Heavy", "Light"], "correct": "Wait", "hint": "You might wait for your turn, but weight is how heavy something is."},
         {"words": ["Stationary", "Stationery", "Pen", "Pencil"], "correct": "Stationary", "hint": "You write with stationery like pens, but stationary means not moving."},
         {"words": ["Rose", "Rows", "Lines", "Stripes"], "correct": "Rose", "hint": "A rose is a beautiful flower, while rows are lines of things in order."},
         {"words": ["Throne", "Thrown", "Cast", "Toss"], "correct": "Throne", "hint": "A king sits on a throne, while thrown means something was tossed."},
         {"words": ["Paws", "Pause", "Stop", "Go"], "correct": "Paws", "hint": "Cats have paws to walk with, but we pause a movie to stop it for a while."},
         {"words": ["Hear", "Here", "There", "Where"], "correct": "Hear", "hint": "You can hear with your ears, but here is the place where we are."},
         {"words": ["One", "Won", "Received", "Gained"], "correct": "One", "hint": "You have one apple, but won means you came first in a game."},
-        {"words": ["Maze", "Maize", "Corn", "Wheat"], "correct": "Maize", "hint": "A maze is a puzzle to walk through, while maize is another word for corn."},
+        {"words": ["Maze", "Maize", "Corn", "Wheat"], "correct": "Maze", "hint": "A maze is a puzzle to walk through, while maize is another word for corn."},
         {"words": ["Principal", "Principle", "Rule", "Guideline"], "correct": "Principal", "hint": "The principal runs our school, but a principle is an important rule."},
         {"words": ["Hole", "Whole", "Entire", "Part"], "correct": "Hole", "hint": "You might dig a hole in the ground, but whole means all of something."}
     ],
