@@ -1,7 +1,5 @@
 #Ignore
 public/
-firebase.json
-.firebaserc
 # Logs
 logs
 *.log
